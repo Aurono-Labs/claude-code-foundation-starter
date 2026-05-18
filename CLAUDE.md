@@ -12,12 +12,17 @@ After bootstrap is complete, remove this comment block and replace the placehold
 
 ## Origin
 
-This pack codifies the working method used at **Aurono Labs**
-(auronolabs.com) to build Aurono Start — a local-first, execution-only crypto
-trading platform. Every foundation file in `docs/` includes an
-"Example — how Aurono Labs answered this" block drawn from the real Aurono
-Start documentation, so you can see the shape and quality bar of a good
-answer before the operator's interview begins.
+This pack codifies the working method developed at **Aurono Labs**
+(auronolabs.com) — an organization building local-first, execution-only
+infrastructure for personal capital — while shipping their first product,
+**Aurono Start**: a local-first crypto trading application that runs on
+the user's own hardware. The Aurono Start repository is the reference
+implementation of this method.
+
+Every foundation file in `docs/` includes an "Example — how Aurono Labs
+answered this" block drawn from the real Aurono Start documentation, so
+you can see the shape and quality bar of a good answer before the
+operator's interview begins.
 
 END BOOTSTRAP -->
 

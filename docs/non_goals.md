@@ -89,7 +89,7 @@ it is a non-goal by default.
 > **Why:** Custody changes the trust model, the regulatory exposure, and the
 > failure surface. Non-custody is a load-bearing wall of the product.
 
-Source: Aurono Labs · auronolabs.com · `docs/v1_non_goals.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/v1_non_goals.md`.
 
 END BOOTSTRAP -->
 

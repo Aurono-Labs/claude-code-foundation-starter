@@ -103,7 +103,7 @@ Replace this BOOTSTRAP block. Suggested structure:
 >    and emit deterministic events. UI = representation only.
 > 2. **Events are append-only.** Never edited, never deleted.
 
-Source: Aurono Labs · auronolabs.com · `docs/Aurono_Start_V1_architecture.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/Aurono_Start_V1_architecture.md`.
 
 END BOOTSTRAP -->
 

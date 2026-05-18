@@ -98,7 +98,7 @@ backlog and parked items. The point isn't the volume; the point is that
 every commit can be traced to a numbered item that was planned, executed,
 and closed.)
 
-Source: Aurono Labs · auronolabs.com · `docs/project_plan.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/project_plan.md`.
 
 END BOOTSTRAP -->
 

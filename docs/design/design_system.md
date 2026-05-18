@@ -112,7 +112,7 @@ Replace this BOOTSTRAP block. Suggested structure:
 > WCAG 2.1 AA. 4.5:1 text contrast, 3:1 UI elements, focus visible (2px ring),
 > keyboard navigable, semantic HTML, respect `prefers-reduced-motion`.
 
-Source: Aurono Labs · auronolabs.com · `docs/design/DESIGN-SYSTEM.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/design/DESIGN-SYSTEM.md`.
 
 END BOOTSTRAP -->
 

@@ -98,7 +98,7 @@ operator triggers Phase 6 — Closing.
 deliverable adds a block like this; the pre-commit hook blocks user-facing
 code commits that don't also touch this file.)
 
-Source: Aurono Labs · auronolabs.com · `docs/Functional_Tests.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/Functional_Tests.md`.
 
 END BOOTSTRAP -->
 

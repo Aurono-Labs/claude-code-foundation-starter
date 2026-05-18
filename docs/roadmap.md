@@ -96,7 +96,7 @@ End with a short **Summary** section connecting the phases to the vision.
 > Execution layer embeddable into partner products. Aurono Foundation
 > formalizes stewardship of the open core.
 
-Source: Aurono Labs · auronolabs.com · `docs/Aurono_Roadmap.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/Aurono_Roadmap.md`.
 
 END BOOTSTRAP -->
 

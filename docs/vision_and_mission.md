@@ -74,7 +74,7 @@ Replace this BOOTSTRAP block with the synthesized content. Suggested structure:
 > local plug-and-play device. No subscriptions for core use. No performance
 > fees. No data monetization. Aurono earns only when users trade.
 
-Source: Aurono Labs · auronolabs.com · `docs/vision_and_mission.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/vision_and_mission.md`.
 
 END BOOTSTRAP -->
 

@@ -108,7 +108,7 @@ Replace this BOOTSTRAP block. Suggested structure:
 > "If you feel the urge to reuse a term for a new meaning, you need a new
 > term instead." — v1.0, locked.
 
-Source: Aurono Labs · auronolabs.com · `docs/domain_terminology.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/domain_terminology.md`.
 
 END BOOTSTRAP -->
 

@@ -107,7 +107,7 @@ Replace this BOOTSTRAP block. Suggested structure:
 >   etc.; the Pi install runs `tsc -b`, so both must pass before claiming green.
 > - Every UI component handles four states: loading, empty, error, populated.
 
-Source: Aurono Labs · auronolabs.com · `docs/testing/TEST-SUITE.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/testing/TEST-SUITE.md`.
 
 END BOOTSTRAP -->
 

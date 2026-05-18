@@ -85,7 +85,7 @@ N. Outcome: <what they walk away with>
 > Outcome: device is working, no money at risk, the user has a working
 > mental model of what Aurono will do.
 
-Source: Aurono Labs · auronolabs.com · `docs/design/USER-JOURNEYS.md`.
+Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/design/USER-JOURNEYS.md`.
 
 END BOOTSTRAP -->
 
