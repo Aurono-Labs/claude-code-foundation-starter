@@ -5,7 +5,7 @@
 
 A skeleton for starting a new project with Claude Code in a structured way. Instead of opening a fresh repo and immediately asking Claude Code to write features, you drop these files in, run a short bootstrap interview, and end up with a documentation foundation Claude Code re-anchors on every session.
 
-The method behind this pack is described in detail in the companion talk *How I Code With Claude Code*. Every foundation file's bootstrap preamble includes a short **"Example — how Aurono Labs answered this"** block drawn from the real Aurono Start documentation, so operators can see the shape and quality bar of a good answer before they start their interview.
+The method behind this pack is described in detail in the companion talk *How I Code With Claude Code* — the full deck (HTML + PDF, NL & EN) lives in [`presentation/`](presentation/). Every foundation file's bootstrap preamble includes a short **"Example — how Aurono Labs answered this"** block drawn from the real Aurono Start documentation, so operators can see the shape and quality bar of a good answer before they start their interview.
 
 ---
 
@@ -14,6 +14,7 @@ The method behind this pack is described in detail in the companion talk *How I 
 ```
 .
 ├── CLAUDE.md                          ← Keystone: the contract
+├── LICENSE                            ← Aurono Labs Foundation Starter License v1.0
 ├── docs/
 │   ├── vision_and_mission.md          ← Layer 1 — Why we exist
 │   ├── roadmap.md                     ← Layer 2 — What we're shipping
@@ -27,6 +28,10 @@ The method behind this pack is described in detail in the companion talk *How I 
 │   │   └── user_journeys.md           ← Layer 5c — Who does what, when
 │   └── testing/
 │       └── test_suite.md              ← Layer 5d — Automated test inventory
+└── presentation/                      ← The companion talk
+    ├── hoe-ik-codeer-met-claude-code.html / .pdf   ← Dutch
+    ├── how-i-code-with-claude-code.html / .pdf     ← English
+    └── aurono-labs-logo.png
 ```
 
 Each file is **deliberately empty** below a `<!-- BOOTSTRAP INSTRUCTIONS -->` block. The block tells Claude Code how to interview you and fill the file in. Nothing about your specific organization is prescribed — only the *shape* of the answers.
