@@ -144,7 +144,11 @@ If you ever want to rerun the interview for a single file, paste the preamble ba
 
 ## About Aurono Labs
 
-This pack codifies the working method behind **Aurono Labs** — a local-first, execution-only crypto trading platform. The Aurono Start repository is the reference implementation of this method, and the source of every example in this pack.
+**Aurono Labs** is an organization building local-first, execution-only infrastructure for personal capital. The belief: if software can move money, it must be locally controlled, fully inspectable, and incentive-aligned — anything else eventually breaks trust.
+
+Aurono Labs ships products under the Aurono name. **Aurono Start** is the first — a local-first, execution-only crypto trading application that runs on the user's own hardware, executes user-defined rules, and never takes custody of funds. Future phases extend the platform to portfolio-aware execution, community strategies, multi-asset support, and embeddable execution infrastructure.
+
+This starter pack codifies the working method developed while building Aurono Start. The Aurono Start repository is the reference implementation of that method and the source of every example in this pack.
 
 - Website: [auronolabs.com](https://auronolabs.com)
 - Support docs: [support.auronolabs.com](https://support.auronolabs.com)
