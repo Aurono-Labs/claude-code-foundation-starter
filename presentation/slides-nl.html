@@ -2,6 +2,12 @@
 <html lang="nl">
 <head>
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="theme-color" content="#1c1917">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjMEQ5NDg4Ii8+CiAgPHRleHQKICAgIHg9IjE2IgogICAgeT0iMjMiCiAgICB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgZm9udC1mYW1pbHk9IkludGVyLCBzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiCiAgICBmb250LXdlaWdodD0iNzAwIgogICAgZm9udC1zaXplPSIyMiIKICAgIGZpbGw9IiNGRkZGRkYiCiAgPkE8L3RleHQ+Cjwvc3ZnPgo=">
+<link rel="apple-touch-icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMiAzMiIgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIj4KICA8cmVjdCB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHJ4PSI2IiBmaWxsPSIjMEQ5NDg4Ii8+CiAgPHRleHQKICAgIHg9IjE2IgogICAgeT0iMjMiCiAgICB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgZm9udC1mYW1pbHk9IkludGVyLCBzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIHNhbnMtc2VyaWYiCiAgICBmb250LXdlaWdodD0iNzAwIgogICAgZm9udC1zaXplPSIyMiIKICAgIGZpbGw9IiNGRkZGRkYiCiAgPkE8L3RleHQ+Cjwvc3ZnPgo=">
 <title>Hoe ik codeer met Claude Code — Eerst het fundament</title>
 <style>
   /* ---------- Aurono design tokens ---------- */
@@ -541,6 +547,138 @@
     font-size: 14px;
     color: var(--text-secondary);
   }
+
+  /* ---------- presentation mode (screen only) ---------- */
+  @media screen {
+    html, body {
+      background: #1c1917;
+      overflow: hidden;
+      height: 100vh;
+      width: 100vw;
+    }
+    .slide {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(var(--deck-scale, 1));
+      transform-origin: center center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.45);
+      display: none;
+      border-radius: 4px;
+    }
+    .slide.active { display: flex; }
+
+    .deck-hud {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: rgba(255,255,255,0.78);
+      background: rgba(0,0,0,0.45);
+      padding: 6px 8px 6px 12px;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 1000;
+      user-select: none;
+    }
+    .deck-hud button {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.22);
+      color: rgba(255,255,255,0.88);
+      width: 30px;
+      height: 30px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      line-height: 1;
+      padding: 0;
+    }
+    .deck-hud button:hover { background: rgba(255,255,255,0.08); }
+    .deck-hud button:active { background: rgba(255,255,255,0.14); }
+    .deck-hud .counter {
+      min-width: 54px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .deck-hud .counter:hover { color: #fff; }
+
+    .deck-toc {
+      position: fixed;
+      inset: 0;
+      background: rgba(12,10,9,0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      z-index: 2000;
+      display: none;
+      overflow: auto;
+      padding: 48px 48px 80px;
+    }
+    .deck-toc.open { display: block; }
+    .deck-toc h2 {
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .deck-toc ol {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 10px;
+      list-style: none;
+      padding: 0;
+      counter-reset: toc;
+    }
+    .deck-toc li { counter-increment: toc; }
+    .deck-toc a {
+      display: flex;
+      gap: 12px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 6px;
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 14px;
+      font-family: var(--font-sans);
+      line-height: 1.4;
+      transition: background 0.12s, border-color 0.12s;
+    }
+    .deck-toc a:hover, .deck-toc a:focus {
+      background: rgba(255,255,255,0.09);
+      border-color: var(--accent);
+      outline: none;
+    }
+    .deck-toc a.current { border-color: var(--accent); background: rgba(13,148,136,0.14); }
+    .deck-toc a .num {
+      color: var(--accent);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      flex-shrink: 0;
+      min-width: 30px;
+    }
+    .deck-toc .hint {
+      position: fixed;
+      bottom: 18px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.5);
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+  }
+
+  @media print {
+    .deck-hud, .deck-toc { display: none !important; }
+  }
 </style>
 </head>
 <body>
@@ -1078,6 +1216,264 @@
     <div style="margin-top: 6px;">eppo@auronolabs.com</div>
   </div>
 </section>
+
+<!-- ============ Appendix 1 / Skills ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">Wat verder</span>
+    <h1>Skills — instructies op afroep.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <p class="lead">Een skill is een markdown-pakket met YAML-frontmatter dat Claude Code automatisch laadt zodra zijn trigger afgaat. Conditioneel dus — anders dan <span class="mono">CLAUDE.md</span>, dat altijd in context staat.</p>
+
+  <div style="display: grid; grid-template-columns: 0.9fr 1.3fr; gap: 36px; margin-top: 22px;">
+    <div>
+      <h3 style="font-size: 19px; margin-bottom: 14px;">Wat ze toevoegen</h3>
+      <ul class="clean">
+        <li><strong>Conditioneel laden</strong> — alleen actief als de trigger past. Minder ruis, scherpere aandacht.</li>
+        <li><strong>Handhaving</strong> boven uitspraak — diff scannen, regels weigeren, niet alleen "denk eraan."</li>
+        <li><strong>Slash commands</strong> i.p.v. fragiele triggerzinnen — eenduidig, met autocomplete en validatie.</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="font-size: 19px; margin-bottom: 14px;">Voorbeeld: zes triggerzinnen, zes commands</h3>
+      <div class="aurono-example" style="margin-top: 0; padding: 14px 18px;">
+        <div class="ex-table" style="grid-template-columns: auto 1fr;">
+          <span class="col-name">"Nieuw idee: …"</span><span class="col-phase">/idee</span>
+          <span class="col-name">"Op de backlog"</span><span class="col-phase">/backlog</span>
+          <span class="col-name">"Laten we X bouwen"</span><span class="col-phase">/plan</span>
+          <span class="col-name">"Plan geaccepteerd"</span><span class="col-phase">/uitvoeren</span>
+          <span class="col-name">(operator test)</span><span class="col-phase">/ft-cycle</span>
+          <span class="col-name">"FT's afgesloten"</span><span class="col-phase">/afsluiten</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top: 22px; padding: 14px 20px; background: var(--surface-raised); border-left: 3px solid var(--warm-loss); border-radius: 4px;">
+    <p style="color: var(--text-secondary); font-size: 15px; line-height: 1.5;"><strong style="color: var(--warm-loss);">Voor nu nog geen grote winst.</strong> Discipline en <span class="mono">CLAUDE.md</span> doen al veel. Ik herzie het maandelijks — zodra een skill écht het verschil zou maken, dán pas implementeer ik 'm.</p>
+  </div>
+
+  <footer class="slide-footer">
+    <span>Hoe ik codeer met Claude Code</span>
+    <span>Appendix · 1 / 2</span>
+  </footer>
+</section>
+
+<!-- ============ Appendix 2 / Plugins ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">Wat verder</span>
+    <h1>Plugins — buiten Claude's eigen wereld.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <p class="lead">Een plugin geeft Claude Code toegang tot tools die het zelf niet heeft — een browser, een database, een externe API. Skills zijn <em>instructies</em>; plugins zijn <em>capaciteiten</em>.</p>
+
+  <div class="grid-2" style="margin-top: 28px;">
+    <div class="card">
+      <div class="file">concept</div>
+      <h3>Wat is een plugin?</h3>
+      <p>Een extern programma dat via het MCP-protocol zijn tools beschikbaar maakt voor Claude Code. Eenmalig geconfigureerd, daarna aanroepbaar zoals elke andere tool. Configuratie staat in <span class="mono">.claude/settings.json</span>, dus de hele werkomgeving reist mee met de repo.</p>
+    </div>
+    <div class="card">
+      <div class="file">in gebruik</div>
+      <h3>Playwright — design in de browser</h3>
+      <p>De plugin die ik nu gebruik. Claude opent de site in een echte browser, klikt rond, neemt screenshots, en vergelijkt het beeld met <span class="mono">design_system.md</span>. Eerste design-check zonder dat ik er zelf naar hoef te kijken.</p>
+    </div>
+  </div>
+
+  <div class="aurono-example" style="margin-top: 22px;">
+    <div class="ex-eyebrow">
+      <span class="label">Wat dit verder kan worden voor Aurono</span>
+    </div>
+    <ul class="ex-rules" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4px 28px;">
+      <li>User journeys (login, order placement, fee preview) headless laten draaien in fase 4 van de workflow.</li>
+      <li>Postgres-plugin om event taxonomie en payloads tegen echte data te toetsen.</li>
+      <li>Exchange-API-plugin (Binance, Coinbase) voor live contract-checks van orderstromen.</li>
+      <li>Linear- of GitHub-plugin om fase 1 (idee-intake) direct aan ticketing te koppelen.</li>
+    </ul>
+  </div>
+
+  <footer class="slide-footer">
+    <span>Hoe ik codeer met Claude Code</span>
+    <span>Appendix · 2 / 2</span>
+  </footer>
+</section>
+
+<script>
+(function () {
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  if (!slides.length) return;
+  let current = 0;
+  let digitBuffer = '';
+  let digitTimer = null;
+
+  function applyScale() {
+    const margin = 32;
+    const sx = (window.innerWidth - margin) / 1280;
+    const sy = (window.innerHeight - margin) / 720;
+    const scale = Math.min(sx, sy, 1);
+    document.documentElement.style.setProperty('--deck-scale', scale.toFixed(4));
+  }
+
+  function show(i) {
+    current = Math.max(0, Math.min(slides.length - 1, i));
+    slides.forEach((s, idx) => s.classList.toggle('active', idx === current));
+    history.replaceState(null, '', '#' + (current + 1));
+    updateHUD();
+    updateTOCHighlight();
+  }
+
+  function updateHUD() {
+    const c = document.querySelector('.deck-hud .counter');
+    if (c) c.textContent = (current + 1) + ' / ' + slides.length;
+  }
+
+  function getSlideTitle(slide) {
+    const h1 = slide.querySelector('h1');
+    if (!h1) return 'Slide';
+    return h1.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function buildHUD() {
+    const hud = document.createElement('div');
+    hud.className = 'deck-hud';
+    hud.innerHTML =
+      '<button data-action="prev" aria-label="Vorige">&larr;</button>' +
+      '<span class="counter" title="Open inhoudsopgave (T)">1 / ' + slides.length + '</span>' +
+      '<button data-action="next" aria-label="Volgende">&rarr;</button>';
+    document.body.appendChild(hud);
+    hud.querySelector('[data-action=prev]').addEventListener('click', () => show(current - 1));
+    hud.querySelector('[data-action=next]').addEventListener('click', () => show(current + 1));
+    hud.querySelector('.counter').addEventListener('click', () => toggleTOC());
+  }
+
+  function buildTOC() {
+    const toc = document.createElement('div');
+    toc.className = 'deck-toc';
+    const ol = document.createElement('ol');
+    slides.forEach((s, idx) => {
+      const li = document.createElement('li');
+      const a = document.createElement('a');
+      a.href = '#' + (idx + 1);
+      a.dataset.index = idx;
+      a.innerHTML = '<span class="num">' + String(idx + 1).padStart(2, '0') + '</span><span>' + getSlideTitle(s) + '</span>';
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        show(idx);
+        closeTOC();
+      });
+      li.appendChild(a);
+      ol.appendChild(li);
+    });
+    const heading = document.createElement('h2');
+    heading.textContent = 'Inhoudsopgave';
+    toc.appendChild(heading);
+    toc.appendChild(ol);
+    const hint = document.createElement('div');
+    hint.className = 'hint';
+    hint.textContent = '← → navigeren · T sluiten · F fullscreen · cijfers direct naar slide';
+    toc.appendChild(hint);
+    document.body.appendChild(toc);
+  }
+
+  function updateTOCHighlight() {
+    document.querySelectorAll('.deck-toc a').forEach((a) => {
+      a.classList.toggle('current', parseInt(a.dataset.index, 10) === current);
+    });
+  }
+
+  function toggleTOC() {
+    const toc = document.querySelector('.deck-toc');
+    if (!toc) return;
+    toc.classList.toggle('open');
+    if (toc.classList.contains('open')) {
+      const cur = toc.querySelector('a.current') || toc.querySelector('a');
+      if (cur) cur.focus();
+    }
+  }
+
+  function closeTOC() {
+    const toc = document.querySelector('.deck-toc');
+    if (toc) toc.classList.remove('open');
+  }
+
+  function toggleFullscreen() {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
+  }
+
+  function flushDigits() {
+    if (digitBuffer.length) {
+      const n = parseInt(digitBuffer, 10);
+      if (!isNaN(n) && n >= 1 && n <= slides.length) show(n - 1);
+    }
+    digitBuffer = '';
+    digitTimer = null;
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.target.matches('input, textarea, [contenteditable=true]')) return;
+    const tocOpen = document.querySelector('.deck-toc.open');
+
+    if (e.key === 'Escape') {
+      if (tocOpen) { e.preventDefault(); closeTOC(); }
+      return;
+    }
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ' || e.key === 'l' || e.key === 'n') {
+      e.preventDefault(); show(current + 1); return;
+    }
+    if (e.key === 'ArrowLeft' || e.key === 'PageUp' || e.key === 'h' || e.key === 'p') {
+      e.preventDefault(); show(current - 1); return;
+    }
+    if (e.key === 'Home') { e.preventDefault(); show(0); return; }
+    if (e.key === 'End') { e.preventDefault(); show(slides.length - 1); return; }
+    if (e.key === 't' || e.key === 'T') { e.preventDefault(); toggleTOC(); return; }
+    if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); return; }
+    if (/^[0-9]$/.test(e.key)) {
+      digitBuffer += e.key;
+      if (digitTimer) clearTimeout(digitTimer);
+      digitTimer = setTimeout(flushDigits, 600);
+      return;
+    }
+    if (e.key === 'Enter' && digitBuffer.length) {
+      if (digitTimer) clearTimeout(digitTimer);
+      flushDigits();
+    }
+  });
+
+  // Touch swipe
+  let tX = 0, tY = 0, tMoved = false;
+  document.addEventListener('touchstart', (e) => {
+    tX = e.touches[0].clientX;
+    tY = e.touches[0].clientY;
+    tMoved = false;
+  }, { passive: true });
+  document.addEventListener('touchmove', () => { tMoved = true; }, { passive: true });
+  document.addEventListener('touchend', (e) => {
+    if (!tMoved) return;
+    const dx = e.changedTouches[0].clientX - tX;
+    const dy = e.changedTouches[0].clientY - tY;
+    if (Math.abs(dx) > 60 && Math.abs(dx) > Math.abs(dy) * 1.4) {
+      show(current + (dx < 0 ? 1 : -1));
+    }
+  }, { passive: true });
+
+  function syncFromHash() {
+    const n = parseInt(location.hash.slice(1), 10);
+    if (!isNaN(n) && n >= 1 && n <= slides.length) show(n - 1);
+  }
+  window.addEventListener('hashchange', syncFromHash);
+  window.addEventListener('resize', applyScale);
+  window.addEventListener('orientationchange', applyScale);
+
+  buildHUD();
+  buildTOC();
+  applyScale();
+  if (location.hash) syncFromHash();
+  else show(0);
+})();
+</script>
 
 </body>
 </html>
