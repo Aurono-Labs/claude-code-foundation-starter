@@ -548,6 +548,63 @@
     color: var(--text-secondary);
   }
 
+  /* ---------- workflow checkpoint ---------- */
+  .workflow .step.checkpoint {
+    border: 1.5px solid var(--amber);
+    background: linear-gradient(180deg, rgba(180,83,9,0.06) 0%, var(--surface-raised) 70%);
+    box-shadow: 0 0 0 3px rgba(180,83,9,0.08);
+  }
+  .workflow .step.checkpoint .num { color: var(--amber); }
+  .workflow .step.checkpoint .marker {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: #fff;
+    background: var(--amber);
+    padding: 3px 9px;
+    border-radius: 3px;
+    white-space: nowrap;
+    text-transform: uppercase;
+  }
+
+  /* ---------- close slide CTA ---------- */
+  .close-slide .close-cta {
+    margin-top: 36px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 880px;
+    width: 100%;
+  }
+  .close-slide .cta-item {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 14px 18px;
+  }
+  .close-slide .cta-item .cta-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .close-slide .cta-item .cta-value {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--accent);
+    font-weight: 500;
+    word-break: break-all;
+  }
+
   /* ---------- presentation mode (screen only) ---------- */
   @media screen {
     html, body {
@@ -1122,7 +1179,8 @@
       <div class="phase">Execution</div>
       <div class="trigger">"Plan accepted"</div>
     </div>
-    <div class="step">
+    <div class="step checkpoint">
+      <span class="marker">Human in the loop</span>
       <div class="num">PHASE 5</div>
       <div class="phase">Functional Testing</div>
       <div class="trigger">(operator tests)</div>
@@ -1133,7 +1191,7 @@
       <div class="trigger">"FTs closed"</div>
     </div>
   </div>
-  <p class="body" style="margin-top: 36px; font-size: 17px;">No drift. No <em>"wait, what were we building again?"</em> No commits to master at 11pm with no tests.</p>
+  <p class="body" style="margin-top: 32px; font-size: 17px;">Phase 5 is the only place Claude doesn't continue. <span class="accent" style="font-weight:600">The operator tests.</span> Without this gate, untested commits land in master at 11pm.</p>
   <footer class="slide-footer">
     <span>How I code with Claude Code</span>
     <span>12 / 15</span>
@@ -1210,9 +1268,18 @@
 <section class="slide close-slide">
   <h1>Foundation <span class="em">first.</span><br>Code <span class="em">second.</span></h1>
   <p class="lead" style="font-size: 24px;">The model writes the code. <br><span class="accent" style="font-weight: 600;">The documents write the model.</span></p>
+  <div class="close-cta">
+    <div class="cta-item">
+      <span class="cta-label">Grab the template</span>
+      <span class="cta-value">github.com/Aurono-Labs/claude-code-foundation-starter</span>
+    </div>
+    <div class="cta-item">
+      <span class="cta-label">Tell me where you got stuck</span>
+      <span class="cta-value">eppo@auronolabs.com</span>
+    </div>
+  </div>
   <div class="signoff">
     <div>Aurono Labs · auronolabs.com · 2026</div>
-    <div style="margin-top: 6px;">eppo@auronolabs.com</div>
   </div>
 </section>
 
@@ -1318,7 +1385,8 @@
   function show(i) {
     current = Math.max(0, Math.min(slides.length - 1, i));
     slides.forEach((s, idx) => s.classList.toggle('active', idx === current));
-    history.replaceState(null, '', '#' + (current + 1));
+    const slug = slugify(getSlideTitle(slides[current]));
+    history.replaceState(null, '', '#' + (current + 1) + (slug ? '-' + slug : ''));
     updateHUD();
     updateTOCHighlight();
   }
@@ -1332,6 +1400,15 @@
     const h1 = slide.querySelector('h1');
     if (!h1) return 'Slide';
     return h1.textContent.replace(/\s+/g, ' ').trim();
+  }
+
+  function slugify(text) {
+    const slug = text.normalize('NFD').replace(/[̀-ͯ]/g, '')
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-')
+      .replace(/^-+|-+$/g, '');
+    if (slug.length > 40) return slug.substring(0, 40).replace(/-[^-]*$/, '');
+    return slug;
   }
 
   function buildHUD() {
@@ -1459,8 +1536,10 @@
   }, { passive: true });
 
   function syncFromHash() {
-    const n = parseInt(location.hash.slice(1), 10);
-    if (!isNaN(n) && n >= 1 && n <= slides.length) show(n - 1);
+    const m = location.hash.slice(1).match(/^(\d+)/);
+    if (!m) return;
+    const n = parseInt(m[1], 10);
+    if (n >= 1 && n <= slides.length) show(n - 1);
   }
   window.addEventListener('hashchange', syncFromHash);
   window.addEventListener('resize', applyScale);
