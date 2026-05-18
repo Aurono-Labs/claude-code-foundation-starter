@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>How I Code With Claude Code — Foundation First</title>
+<style>
+  /* ---------- Aurono design tokens ---------- */
+  :root {
+    --surface-base: #FAFAF9;
+    --surface-raised: #FFFFFF;
+    --surface-overlay: #F5F5F4;
+    --accent: #0D9488;
+    --accent-muted: #0F766E;
+    --text-primary: #1C1917;
+    --text-secondary: #57534E;
+    --text-muted: #78716C;
+    --border-subtle: #E7E5E4;
+    --border-default: #D6D3D1;
+    --warm-loss: #9B6549;
+    --amber: #B45309;
+    --info: #2563EB;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
+  }
+
+  @page { size: 1280px 720px; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    background: var(--surface-base);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-size: 18px;
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .slide {
+    width: 1280px;
+    height: 720px;
+    padding: 56px 80px 48px;
+    display: flex;
+    flex-direction: column;
+    page-break-after: always;
+    page-break-inside: avoid;
+    background: var(--surface-base);
+    position: relative;
+  }
+  .slide:last-child { page-break-after: auto; }
+
+  /* ---------- shared blocks ---------- */
+  .chip {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 4px;
+    background: var(--surface-overlay);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+  }
+  .chip.accent { background: var(--accent); color: #fff; border-color: var(--accent); }
+
+  h1 {
+    font-size: 44px;
+    line-height: 1.15;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+  }
+  h2 {
+    font-size: 32px;
+    line-height: 1.2;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .lead {
+    font-size: 22px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    max-width: 920px;
+  }
+  .body { color: var(--text-secondary); max-width: 1040px; }
+
+  .mono { font-family: var(--font-mono); }
+  .accent { color: var(--accent); }
+  .muted { color: var(--text-muted); }
+  .warm { color: var(--warm-loss); }
+
+  header.slide-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 28px;
+    width: 100%;
+    align-self: stretch;
+  }
+  header.slide-header .brand {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 13px;
+    font-family: var(--font-mono);
+  }
+  header.slide-header .brand .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent);
+  }
+
+  footer.slide-footer {
+    margin-top: auto;
+    width: 100%;
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-subtle);
+    color: var(--text-muted);
+    font-size: 13px;
+    font-family: var(--font-mono);
+  }
+
+  /* ---------- cards / lists ---------- */
+  .card {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 20px 24px;
+  }
+  .card .file {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .card h3 { font-size: 19px; margin-bottom: 6px; }
+  .card p { font-size: 15px; color: var(--text-secondary); }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+
+  ul.clean { list-style: none; }
+  ul.clean li {
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+    font-size: 17px;
+  }
+  ul.clean li::before {
+    content: '';
+    position: absolute;
+    left: 4px;
+    top: 11px;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  /* ---------- title slide ---------- */
+  .title-slide {
+    justify-content: center;
+    background: linear-gradient(180deg, var(--surface-base) 0%, var(--surface-overlay) 100%);
+  }
+  .title-slide .eyebrow {
+    color: var(--accent);
+    font-family: var(--font-mono);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+  }
+  .title-slide h1 {
+    font-size: 64px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    max-width: 1000px;
+  }
+  .title-slide .subtitle {
+    font-size: 24px;
+    color: var(--text-secondary);
+    max-width: 800px;
+    margin-bottom: 40px;
+  }
+  .title-slide .meta {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+  .title-slide .meta .sep { color: var(--border-default); }
+
+  /* ---------- quote slide ---------- */
+  .quote-slide { justify-content: center; align-items: flex-start; }
+  .quote-slide blockquote {
+    border-left: 4px solid var(--accent);
+    padding-left: 32px;
+    font-size: 40px;
+    line-height: 1.25;
+    color: var(--text-primary);
+    font-weight: 500;
+    max-width: 1040px;
+    letter-spacing: -0.01em;
+  }
+  .quote-slide blockquote .em { color: var(--accent); }
+  .quote-slide .attribution {
+    margin-top: 28px;
+    padding-left: 36px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: 14px;
+  }
+
+  /* ---------- pyramid slide ---------- */
+  .pyramid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .pyramid .row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border-radius: 6px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    padding: 0 24px;
+    font-size: 18px;
+    color: var(--text-primary);
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+  }
+  .pyramid .row .layer-tag {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-right: 16px;
+    padding: 3px 8px;
+    border: 1px solid var(--border-subtle);
+    border-radius: 4px;
+    background: var(--surface-overlay);
+  }
+  .pyramid .row .files {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-left: 16px;
+  }
+  .pyramid .row.keystone {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+  .pyramid .row.keystone .layer-tag { background: rgba(255,255,255,0.18); color: #fff; border-color: rgba(255,255,255,0.3); }
+  .pyramid .row.keystone .files { color: rgba(255,255,255,0.85); }
+  .pyramid .row.w1 { width: 380px; }
+  .pyramid .row.w2 { width: 540px; }
+  .pyramid .row.w3 { width: 680px; }
+  .pyramid .row.w4 { width: 820px; }
+  .pyramid .row.w5 { width: 960px; }
+  .pyramid .row.w6 { width: 1100px; }
+
+  /* ---------- layer slide ---------- */
+  .layer-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 40px;
+    margin-top: 8px;
+    align-items: start;
+  }
+  .layer-grid .files-col .file-pill {
+    display: block;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--accent);
+  }
+  .layer-grid .files-col .file-pill .arrow { color: var(--text-muted); margin-right: 6px; }
+  .layer-grid .copy h2 { margin-bottom: 16px; }
+  .layer-grid .copy p { font-size: 18px; color: var(--text-secondary); margin-bottom: 14px; }
+  .layer-grid .copy .demo-line {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: var(--surface-raised);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    font-size: 16px;
+    color: var(--text-secondary);
+    font-style: italic;
+  }
+  .layer-grid .copy .demo-line strong { color: var(--accent); font-style: normal; font-weight: 600; }
+
+  /* ---------- Aurono example callout (replaces demo-line on layer slides) ---------- */
+  .aurono-example {
+    margin-top: 18px;
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-left: 3px solid var(--accent);
+    border-radius: 4px;
+    padding: 14px 20px 16px;
+  }
+  .aurono-example .ex-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .aurono-example .ex-eyebrow .label {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .aurono-example .ex-eyebrow .arrow { color: var(--text-muted); }
+  .aurono-example .ex-eyebrow .path {
+    color: var(--text-secondary);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+  .aurono-example .ex-quote {
+    color: var(--text-primary);
+    font-size: 15px;
+    line-height: 1.55;
+    font-style: italic;
+  }
+  .aurono-example .ex-quote + .ex-quote { margin-top: 10px; }
+  .aurono-example .ex-coda {
+    margin-top: 10px;
+    color: var(--text-secondary);
+    font-size: 13px;
+    font-family: var(--font-mono);
+  }
+  .aurono-example .ex-table {
+    display: grid;
+    grid-template-columns: auto auto auto 1fr;
+    gap: 6px 18px;
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    align-items: baseline;
+  }
+  .aurono-example .ex-table .col-phase { color: var(--accent); font-weight: 600; }
+  .aurono-example .ex-table .col-name { color: var(--text-primary); }
+  .aurono-example .ex-table .col-date { color: var(--text-muted); }
+  .aurono-example .ex-table .col-desc { color: var(--text-secondary); }
+  .aurono-example .ex-code {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    line-height: 1.7;
+    color: var(--text-primary);
+    white-space: pre;
+  }
+  .aurono-example .ex-code .neq { color: var(--warm-loss); padding: 0 8px; }
+  .aurono-example .ex-code .lhs { color: var(--text-primary); }
+  .aurono-example .ex-code .rhs { color: var(--text-primary); }
+  .aurono-example .ex-code .check { color: var(--accent); }
+  .aurono-example .ex-code .phase-head { color: var(--accent); font-weight: 600; }
+  .aurono-example .ex-code .muted { color: var(--text-muted); }
+  .aurono-example .ex-rules {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .aurono-example .ex-rules li {
+    position: relative;
+    padding-left: 18px;
+    margin-bottom: 6px;
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  .aurono-example .ex-rules li::before {
+    content: '·';
+    position: absolute;
+    left: 4px;
+    top: -2px;
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 18px;
+  }
+  .aurono-example .ex-rules li .mono { font-family: var(--font-mono); font-size: 13px; color: var(--text-primary); }
+  .aurono-example .ex-rules li .swatch {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: -1px;
+  }
+
+  /* ---------- workflow slide ---------- */
+  .workflow {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .workflow .step {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 6px;
+    padding: 16px 14px;
+    position: relative;
+  }
+  .workflow .step .num {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .workflow .step .phase {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+  }
+  .workflow .step .trigger {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-secondary);
+    background: var(--surface-overlay);
+    padding: 4px 6px;
+    border-radius: 3px;
+    border: 1px solid var(--border-subtle);
+    display: inline-block;
+  }
+
+  /* ---------- example flow ---------- */
+  .terminal {
+    margin-top: 16px;
+    background: #1C1917;
+    border-radius: 8px;
+    padding: 24px 28px;
+    font-family: var(--font-mono);
+    font-size: 14px;
+    line-height: 1.7;
+    color: #E7E5E4;
+  }
+  .terminal .user { color: #5EEAD4; }
+  .terminal .claude { color: #FCD34D; }
+  .terminal .meta { color: #78716C; font-style: italic; }
+  .terminal .sep { color: #57534E; margin: 8px 0; }
+
+  /* ---------- close slide ---------- */
+  .close-slide { justify-content: center; }
+  .close-slide h1 {
+    font-size: 80px;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin-bottom: 24px;
+  }
+  .close-slide h1 .em { color: var(--accent); }
+  .close-slide .signoff {
+    margin-top: 40px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+
+  /* method slide */
+  .method-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 24px;
+  }
+  .method-step {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 20px 22px;
+  }
+  .method-step .step-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 14px;
+  }
+  .method-step h3 { font-size: 17px; margin-bottom: 8px; }
+  .method-step p { font-size: 14px; color: var(--text-secondary); }
+
+  /* problem slide */
+  .problem-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-top: 32px;
+  }
+  .problem-stats .stat {
+    background: var(--surface-raised);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 24px;
+  }
+  .problem-stats .stat .label {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+  }
+  .problem-stats .stat .value {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+  }
+  .problem-stats .stat .desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ Slide 1 / Title ============ -->
+<section class="slide title-slide">
+  <div class="eyebrow">A working method</div>
+  <h1>How I code with Claude Code.</h1>
+  <p class="subtitle">Foundation first. Code second. Why two hours of writing markdown saves you weeks of drift.</p>
+  <div class="meta">
+    <span>Aurono Labs</span>
+    <span class="sep">·</span>
+    <span>auronolabs.com</span>
+    <span class="sep">·</span>
+    <span>2026</span>
+  </div>
+</section>
+
+<!-- ============ Slide 2 / The one message ============ -->
+<section class="slide quote-slide">
+  <header class="slide-header">
+    <span class="chip accent">The Idea</span>
+    <h1>One sentence to remember.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <blockquote>
+    I don't tell Claude Code what to build.<br>
+    I tell it <span class="em">what we stand for</span>, <span class="em">what we're shipping</span>,<br>
+    <span class="em">how we test</span>, and <span class="em">how we ship</span> — then building becomes the easy part.
+  </blockquote>
+  <div class="attribution">— the working method</div>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>02 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 3 / The problem ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">Problem</span>
+    <h1>Long projects drift.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <p class="lead">A weekend hack survives without structure. A real product doesn't. Across hundreds of sessions you lose coherence: vocabulary, scope, design choices, what "done" means.</p>
+  <div class="problem-stats">
+    <div class="stat">
+      <div class="label">Vocabulary</div>
+      <div class="value warm">"Trade" ≠ "Order" ≠ "Fill"</div>
+      <div class="desc">Two engineers using the same word for different things is where rot begins.</div>
+    </div>
+    <div class="stat">
+      <div class="label">Scope</div>
+      <div class="value warm">Phase 2 leaks into Phase 1</div>
+      <div class="desc">Without a roadmap, every shiny idea looks like the next sprint.</div>
+    </div>
+    <div class="stat">
+      <div class="label">Quality</div>
+      <div class="value warm">"Done" without tests</div>
+      <div class="desc">Without a workflow, commits land at 11pm with no functional verification.</div>
+    </div>
+  </div>
+  <p class="body" style="margin-top: 32px; font-size: 17px;">The fix isn't a smarter model. It's <span class="accent" style="font-weight:600">a written foundation the model re-anchors on every session.</span></p>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>03 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 4 / The pyramid ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">The Foundation</span>
+    <h1>Five layers and a keystone.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <p class="lead">Each layer constrains the one below it. The keystone — <span class="mono accent">CLAUDE.md</span> — points to every layer and defines how the work flows through them.</p>
+  <div class="pyramid">
+    <div class="row keystone w1">
+      <span class="layer-tag">Keystone</span>
+      The contract
+      <span class="files">CLAUDE.md</span>
+    </div>
+    <div class="row w2">
+      <span class="layer-tag">Layer 1</span>
+      Why we exist
+      <span class="files">vision_and_mission.md</span>
+    </div>
+    <div class="row w3">
+      <span class="layer-tag">Layer 2</span>
+      What we're shipping
+      <span class="files">roadmap.md</span>
+    </div>
+    <div class="row w4">
+      <span class="layer-tag">Layer 3</span>
+      How we speak
+      <span class="files">domain_terminology.md · non_goals.md</span>
+    </div>
+    <div class="row w5">
+      <span class="layer-tag">Layer 4</span>
+      What we're building
+      <span class="files">project_plan.md · architecture.md</span>
+    </div>
+    <div class="row w6">
+      <span class="layer-tag">Layer 5</span>
+      How it looks &amp; how we prove it
+      <span class="files">design_system.md · test_suite.md · functional_tests.md</span>
+    </div>
+  </div>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>04 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 5 / Layer 1 — Vision ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">Layer 1</span>
+    <h1>Why we exist.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <div class="layer-grid">
+    <div class="files-col">
+      <span class="file-pill"><span class="arrow">→</span>docs/vision_and_mission.md</span>
+      <div class="card" style="margin-top:24px">
+        <h3>What it decides</h3>
+        <p>Every feature can be tested against this. If it can't be reconciled with the mission, it doesn't get built.</p>
+      </div>
+    </div>
+    <div class="copy">
+      <h2>The 130 lines that decide everything else.</h2>
+      <ul class="clean">
+        <li>"Local-first, execution-only. No custody, no predictions, no centralized control."</li>
+        <li>The open-source / proprietary boundary is drawn here, once.</li>
+        <li>The business model is here too — so feature ideas that break it are obvious early.</li>
+      </ul>
+      <div class="aurono-example">
+        <div class="ex-eyebrow">
+          <span class="label">From Aurono Start</span>
+          <span class="arrow">→</span>
+          <span class="path">docs/vision_and_mission.md</span>
+        </div>
+        <div class="ex-quote">"If software can move money, it must be locally controlled, fully inspectable, incentive-aligned. Anything else eventually breaks trust."</div>
+        <div class="ex-coda">Not advice. Not custody. Not prediction.</div>
+      </div>
+    </div>
+  </div>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>05 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 6 / Layer 2 — Roadmap ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">Layer 2</span>
+    <h1>What we're shipping.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <div class="layer-grid">
+    <div class="files-col">
+      <span class="file-pill"><span class="arrow">→</span>docs/roadmap.md</span>
+      <div class="card" style="margin-top:24px">
+        <h3>What it decides</h3>
+        <p>The difference between <span class="mono">now</span>, <span class="mono">later</span>, and <span class="mono">never</span>. Phase 2 features stop sneaking into Phase 1 work.</p>
+      </div>
+    </div>
+    <div class="copy">
+      <h2>Phases with explicit scope.</h2>
+      <ul class="clean">
+        <li>Each phase has a focus, a date window, and a clear boundary.</li>
+        <li>For every phase: what's open source, what's proprietary, and why.</li>
+        <li>The roadmap and the vision agree — or one of them is wrong.</li>
+      </ul>
+      <div class="aurono-example">
+        <div class="ex-eyebrow">
+          <span class="label">From Aurono Start</span>
+          <span class="arrow">→</span>
+          <span class="path">docs/Aurono_Roadmap.md</span>
+        </div>
+        <div class="ex-table">
+          <span class="col-phase">Phase 1</span><span class="col-name">Aurono Start</span><span class="col-date">2026 Q1</span><span class="col-desc">Local execution-only crypto trading</span>
+          <span class="col-phase">Phase 2</span><span class="col-name">Aurono Portfolio</span><span class="col-date">2026 Q2</span><span class="col-desc">Portfolio-aware execution</span>
+          <span class="col-phase">Phase 3</span><span class="col-name">Strategy Store</span><span class="col-date">2026 Q4</span><span class="col-desc">Disclosed strategies, user keeps control</span>
+          <span class="col-phase">Phase 4</span><span class="col-name">Multi-Asset</span><span class="col-date">2027</span><span class="col-desc">Beyond crypto</span>
+          <span class="col-phase">Phase 5</span><span class="col-name">Infrastructure</span><span class="col-date">parallel</span><span class="col-desc">Embeddable execution layer</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>06 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 7 / Layer 3 — Language ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">Layer 3</span>
+    <h1>The locked language.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <div class="layer-grid">
+    <div class="files-col">
+      <span class="file-pill"><span class="arrow">→</span>docs/domain_terminology.md</span>
+      <span class="file-pill"><span class="arrow">→</span>docs/non_goals.md</span>
+      <div class="card" style="margin-top:24px">
+        <h3>The rule</h3>
+        <p>Terms are <span class="accent" style="font-weight:600">write-once</span>. Never renamed. Never overloaded. If a new concept appears, you introduce a new term.</p>
+      </div>
+    </div>
+    <div class="copy">
+      <h2>Words are infrastructure.</h2>
+      <ul class="clean">
+        <li><span class="mono">Decision</span> ≠ <span class="mono">Intent</span> ≠ <span class="mono">Trade</span> ≠ <span class="mono">Order</span> ≠ <span class="mono">Fill</span></li>
+        <li><span class="mono">Reservation</span> ≠ <span class="mono">Allocation</span>. The non-goals file lists what we explicitly will <em>not</em> do.</li>
+        <li>The cost: 20 minutes once. The payoff: weeks of avoided ambiguity in code, events, UI, docs.</li>
+      </ul>
+      <div class="aurono-example">
+        <div class="ex-eyebrow">
+          <span class="label">From Aurono Start</span>
+          <span class="arrow">→</span>
+          <span class="path">docs/domain_terminology.md — § Forbidden Substitutions</span>
+        </div>
+        <div class="ex-code"><span class="lhs">allocation</span><span class="neq">≠</span><span class="rhs">reservation</span>
+<span class="lhs">execution </span><span class="neq">≠</span><span class="rhs">decision</span>
+<span class="lhs">order     </span><span class="neq">≠</span><span class="rhs">trade</span>
+<span class="lhs">intent    </span><span class="neq">≠</span><span class="rhs">decision</span>
+<span class="lhs">trade     </span><span class="neq">≠</span><span class="rhs">round trip</span></div>
+        <div class="ex-coda">"If you feel the urge to reuse a term for a new meaning, you need a new term instead." — v1.0, locked.</div>
+      </div>
+    </div>
+  </div>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>07 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 8 / Layer 4 — Plan & Architecture ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">Layer 4</span>
+    <h1>The plan, and the structure.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <div class="layer-grid">
+    <div class="files-col">
+      <span class="file-pill"><span class="arrow">→</span>docs/project_plan.md</span>
+      <span class="file-pill"><span class="arrow">→</span>docs/architecture.md</span>
+      <div class="card" style="margin-top:24px">
+        <h3>What it decides</h3>
+        <p>Single source of truth for what's done (<span class="accent">✅</span>), what's pending (<span class="muted">⬜</span>), what's in the backlog, what's parked.</p>
+      </div>
+    </div>
+    <div class="copy">
+      <h2>Read every session start.</h2>
+      <ul class="clean">
+        <li>The plan: phases, items, completion markers, backlog, parked. Append-only history.</li>
+        <li>The architecture: technical decisions with their reasons. New options can't break old ones silently.</li>
+        <li>New session? Claude Code already knows where we are. No re-briefing.</li>
+      </ul>
+      <div class="aurono-example">
+        <div class="ex-eyebrow">
+          <span class="label">From Aurono Start</span>
+          <span class="arrow">→</span>
+          <span class="path">docs/project_plan.md</span>
+        </div>
+        <div class="ex-code"><span class="phase-head">PHASE 0 — Freeze Reality (Before Writing Any Code)</span> <span class="check">✅</span>
+  <span class="check">✅</span> Document actual PoC behavior (not intended behavior)
+  <span class="check">✅</span> Declare compatibility boundaries — <span class="muted">docs/v1_non_goals.md</span>
+
+<span class="phase-head">PHASE 1 — Canonical Contracts (No Runtime Code Yet)</span> <span class="check">✅</span>
+  <span class="check">✅</span> Finalize Aurono Event Taxonomy <span class="muted">v1.0 (frozen)</span>
+  <span class="check">✅</span> Define event payload schemas</div>
+      </div>
+    </div>
+  </div>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>08 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 9 / Layer 5 — Design & Tests ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">Layer 5</span>
+    <h1>How it looks, how we prove it.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <div class="layer-grid">
+    <div class="files-col">
+      <span class="file-pill"><span class="arrow">→</span>docs/design/design_system.md</span>
+      <span class="file-pill"><span class="arrow">→</span>docs/design/user_journeys.md</span>
+      <span class="file-pill"><span class="arrow">→</span>docs/testing/test_suite.md</span>
+      <span class="file-pill"><span class="arrow">→</span>docs/functional_tests.md</span>
+    </div>
+    <div class="copy">
+      <h2>The senses, and the proof.</h2>
+      <ul class="clean">
+        <li>Design system: colors, typography, accessibility floor (WCAG 2.1 AA). One register per surface.</li>
+        <li>User journeys: who does what, when. Features map to journeys, not the other way around.</li>
+        <li>Test suite: every test file documented — what it covers, why it exists.</li>
+        <li>Functional tests: <span class="mono">open</span> → <span class="mono">passed</span>/<span class="mono">failed</span>. A Phase 4 deliverable, not an afterthought.</li>
+      </ul>
+      <div class="aurono-example">
+        <div class="ex-eyebrow">
+          <span class="label">From Aurono Start</span>
+          <span class="arrow">→</span>
+          <span class="path">docs/design/DESIGN-SYSTEM.md — § Color-Blind Safety</span>
+        </div>
+        <ul class="ex-rules">
+          <li><span class="swatch" style="background:#DC2626"></span>Red <span class="mono">#DC2626</span> means broken — system errors only, never market fluctuations.</li>
+          <li><span class="swatch" style="background:#9B6549"></span>Losses use warm sand / terracotta <span class="mono">#9B6549</span> — calm, not alarming.</li>
+          <li><span class="swatch" style="background:#0D9488"></span><span class="swatch" style="background:#94A3B8"></span>CVD-safe chart pair: Teal <span class="mono">#0D9488</span> + Slate <span class="mono">#94A3B8</span>.</li>
+          <li>Multi-channel encoding: color + shape (<span class="mono">▲ ▼</span>) + explicit sign (<span class="mono">+€234 / −€12</span>) + label.</li>
+          <li>Monospace for every number, price, quantity, ID. WCAG 2.1 AA is the floor.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>09 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 10 / Keystone ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip accent">Keystone</span>
+    <h1>CLAUDE.md — the contract.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <p class="lead">The file Claude Code reads <span class="accent" style="font-weight:600">first, every session</span>. It points to every foundation layer and defines how the work flows through them.</p>
+  <div class="grid-3" style="margin-top: 32px;">
+    <div class="card">
+      <div class="file">project conventions</div>
+      <h3>Running, installing, testing</h3>
+      <p>One table each. The commands every contributor needs in the first five minutes.</p>
+    </div>
+    <div class="card">
+      <div class="file">the 6-phase workflow</div>
+      <h3>Five trigger phrases</h3>
+      <p>Idea → Backlog → Plan → Execute → Test → Close. Each phase has exact phrasing the operator uses.</p>
+    </div>
+    <div class="card">
+      <div class="file">discipline</div>
+      <h3>"Discuss before building"</h3>
+      <p>Questions are not requests to code. Plans are written before code is touched. Master is sacred.</p>
+    </div>
+    <div class="card">
+      <div class="file">domain alignment</div>
+      <h3>Pointer to every doc</h3>
+      <p>Vision, terminology, design — each constraint travels into every session via this one file.</p>
+    </div>
+    <div class="card">
+      <div class="file">git rules</div>
+      <h3>Feature branches, not master</h3>
+      <p>Pre-commit hook enforces functional-test updates. The workflow has teeth, not just text.</p>
+    </div>
+    <div class="card">
+      <div class="file">review protocol</div>
+      <h3>Foundation stays alive</h3>
+      <p>Manual + automatic checks for drift between files. Monthly reconvergence is part of the contract.</p>
+    </div>
+  </div>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>10 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 11 / The conversation method ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">The Method</span>
+    <h1>For each layer: have a conversation.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <p class="lead">Don't <em>drop</em> these files in the repo and hope. For each one, work it through with Claude Code until the doc is strong enough to push back on bad ideas.</p>
+  <div class="method-grid">
+    <div class="method-step">
+      <div class="step-num">1</div>
+      <h3>Read it together</h3>
+      <p>"Read <span class="mono">vision_and_mission.md</span>. Tell me what you think it commits us to."</p>
+    </div>
+    <div class="method-step">
+      <div class="step-num">2</div>
+      <h3>Stress-test it</h3>
+      <p>Propose a bad idea. Watch it push back. If it doesn't, the doc isn't strong enough — fix the doc.</p>
+    </div>
+    <div class="method-step">
+      <div class="step-num">3</div>
+      <h3>Lock it</h3>
+      <p>Add a sentence to <span class="mono">CLAUDE.md</span>: "all work must align with X, defined in <span class="mono">&lt;file&gt;</span>."</p>
+    </div>
+    <div class="method-step">
+      <div class="step-num">4</div>
+      <h3>Move to the next layer</h3>
+      <p>Vision → Roadmap → Terminology → Plan → Design → Tests → Workflow.</p>
+    </div>
+  </div>
+  <p class="body" style="margin-top: 32px; font-size: 17px;">Total cost: roughly <span class="accent" style="font-weight:600">two hours of focused conversation per project</span>. Payback: within the first week.</p>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>11 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 12 / 6-phase workflow ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">The Workflow</span>
+    <h1>Six phases, five triggers.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <p class="lead">Once the foundation is in place, daily work becomes almost mechanical. Each trigger is a short phrase the operator types; the model knows what to do next.</p>
+  <div class="workflow">
+    <div class="step">
+      <div class="num">PHASE 1</div>
+      <div class="phase">Idea Intake</div>
+      <div class="trigger">"New idea: …"</div>
+    </div>
+    <div class="step">
+      <div class="num">PHASE 2</div>
+      <div class="phase">Backlog or Park</div>
+      <div class="trigger">"Add to backlog"</div>
+    </div>
+    <div class="step">
+      <div class="num">PHASE 3</div>
+      <div class="phase">Planning</div>
+      <div class="trigger">"Let's build X"</div>
+    </div>
+    <div class="step">
+      <div class="num">PHASE 4</div>
+      <div class="phase">Execution</div>
+      <div class="trigger">"Plan accepted"</div>
+    </div>
+    <div class="step">
+      <div class="num">PHASE 5</div>
+      <div class="phase">Functional Testing</div>
+      <div class="trigger">(operator tests)</div>
+    </div>
+    <div class="step">
+      <div class="num">PHASE 6</div>
+      <div class="phase">Closing</div>
+      <div class="trigger">"FTs closed"</div>
+    </div>
+  </div>
+  <p class="body" style="margin-top: 36px; font-size: 17px;">No drift. No <em>"wait, what were we building again?"</em> No commits to master at 11pm with no tests.</p>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>12 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 13 / What you get back ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">In Practice</span>
+    <h1>What an idea looks like, end to end.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <div class="terminal">
+    <div><span class="user">user:</span> New idea: add a portfolio rebalancer.</div>
+    <div><span class="claude">claude:</span> <span class="meta">→ structured assessment: vision alignment / value / effort / complexity / recommendation</span></div>
+    <div class="sep">─</div>
+    <div><span class="user">user:</span> Add to backlog.</div>
+    <div><span class="claude">claude:</span> <span class="meta">→ appends to project_plan.md, shows the line</span></div>
+    <div class="sep">─ weeks later ─</div>
+    <div><span class="user">user:</span> Let's build the portfolio rebalancer.</div>
+    <div><span class="claude">claude:</span> <span class="meta">→ full plan: modules, steps, pytests, functional tests, architectural decisions</span></div>
+    <div class="sep">─</div>
+    <div><span class="user">user:</span> Plan accepted.</div>
+    <div><span class="claude">claude:</span> <span class="meta">→ writes code, writes tests, appends FTs (status: open), updates docs — does NOT commit</span></div>
+    <div class="sep">─</div>
+    <div><span class="user">user:</span> Functional tests closed.</div>
+    <div><span class="claude">claude:</span> <span class="meta">→ feature branch, commit, push, updates USER-JOURNEYS if needed</span></div>
+  </div>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>13 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 14 / Follow-up topics ============ -->
+<section class="slide">
+  <header class="slide-header">
+    <span class="chip">What's Next</span>
+    <h1>Topics I can go deeper on.</h1>
+    <div class="brand"><span class="dot"></span>Aurono Labs</div>
+  </header>
+  <p class="lead">The foundation is the starting point. Four follow-up topics that build on it — each worth its own session.</p>
+  <div class="grid-2" style="margin-top: 28px;">
+    <div class="card">
+      <div class="file">foundation · my favorite</div>
+      <h3>Sharpening vision &amp; mission</h3>
+      <p>From vague intentions to a document that rejects bad ideas on its own. The stress-test method. What separates 130 lines that actually steer from five pages no one opens.</p>
+    </div>
+    <div class="card">
+      <div class="file">deployment</div>
+      <h3>Website + Vercel</h3>
+      <p>How the marketing site lives in the same repo, how Vercel auto-builds every push, and how per-branch preview URLs make the human check before merge nearly free.</p>
+    </div>
+    <div class="card">
+      <div class="file">discipline</div>
+      <h3>The six phases — and what breaks without them</h3>
+      <p>Per phase: why the trigger phrase exists. And what you get when you skip it: direct commits and pushes, no human-in-the-loop test, regressions that only surface in production.</p>
+    </div>
+    <div class="card">
+      <div class="file">maintenance</div>
+      <h3>Periodic review of the foundation</h3>
+      <p>Documents age silently. Monthly review baked into the workflow — not a loose intention. Without it, the contract loses its teeth within a quarter.</p>
+    </div>
+  </div>
+  <p class="body" style="margin-top: 28px; font-size: 17px;">Interested in any of these? <span class="accent" style="font-weight:600">Say the word and we'll book a follow-up.</span></p>
+  <footer class="slide-footer">
+    <span>How I code with Claude Code</span>
+    <span>14 / 15</span>
+  </footer>
+</section>
+
+<!-- ============ Slide 15 / Close ============ -->
+<section class="slide close-slide">
+  <h1>Foundation <span class="em">first.</span><br>Code <span class="em">second.</span></h1>
+  <p class="lead" style="font-size: 24px;">The model writes the code. <br><span class="accent" style="font-weight: 600;">The documents write the model.</span></p>
+  <div class="signoff">
+    <div>Aurono Labs · auronolabs.com · 2026</div>
+    <div style="margin-top: 6px;">eppo@auronolabs.com</div>
+  </div>
+</section>
+
+</body>
+</html>
