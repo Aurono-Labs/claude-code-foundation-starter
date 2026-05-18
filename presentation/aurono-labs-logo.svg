@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 180" role="img" aria-label="Aurono Labs">
+  <circle cx="100" cy="65" r="55" fill="#0D9488"/>
+  <circle cx="100" cy="65" r="48" fill="#F5F5F4"/>
+  <text x="100" y="89" text-anchor="middle"
+        font-family="Inter, system-ui, -apple-system, sans-serif"
+        font-weight="800" font-size="62" fill="#1C1917"
+        letter-spacing="-0.02em">A</text>
+  <text x="100" y="160" text-anchor="middle"
+        font-family="Inter, system-ui, -apple-system, sans-serif"
+        font-weight="700" font-size="22" fill="#1C1917"
+        letter-spacing="-0.01em">Aurono Labs</text>
+</svg>
