@@ -1,4 +1,4 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 ## Goal of this file
 Track manual / exploratory tests for each feature. Unlike automated tests,
@@ -7,9 +7,9 @@ code: "the dashboard renders in this order", "the empty state shows this
 copy", "hovering this dot shows this tooltip".
 
 Status of each test:
-- **open** — defined, not yet executed
-- **passed** — executed successfully
-- **failed** — issue found (linked to fix or note)
+- **open**: defined, not yet executed
+- **passed**: executed successfully
+- **failed**: issue found (linked to fix or note)
 
 ## When to write tests here
 
@@ -20,7 +20,7 @@ The operator runs them manually and updates statuses.
 ## Bootstrap action
 
 For a brand-new project, this file just needs the header and a "how to use"
-section. No content yet — content arrives in Phase 4 of the first feature.
+section. No content yet; content arrives in Phase 4 of the first feature.
 
 Replace this BOOTSTRAP block with the structure below.
 
@@ -32,35 +32,35 @@ Replace this BOOTSTRAP block with the structure below.
 This document tracks functional (manual / exploratory) tests performed after
 feature execution.
 
-- **open** — test defined, not yet executed
-- **passed** — test executed successfully
-- **failed** — test executed, issue found (link to fix or note)
+- **open**: test defined, not yet executed
+- **passed**: test executed successfully
+- **failed**: test executed, issue found (link to fix or note)
 
 ## How to use this file
 
-After each feature is built (Phase 4 — Execution), Claude appends new test
+After each feature is built (Phase 4, Execution), Claude appends new test
 entries with status `open`. The operator performs the tests and updates the
 status to `passed` or `failed`. When all tests for a feature are closed, the
-operator triggers Phase 6 — Closing.
+operator triggers Phase 6 (Closing).
 
 ## Tests
 
 <!-- New functional test entries are appended below this line -->
 
-### Phase X.Y — <Feature name>
+### Phase X.Y: <Feature name>
 
 **Date:** YYYY-MM-DD
 
 <short description of what changed>
 
 #### <Section grouping>
-- [ ] **open** — <specific testable statement>
-- [ ] **open** — <specific testable statement>
+- [ ] **open**: <specific testable statement>
+- [ ] **open**: <specific testable statement>
 ```
 
 ## Rules
 
-- One bullet = one testable statement. Compound tests are forbidden — split
+- One bullet = one testable statement. Compound tests are forbidden; split
   them.
 - Tests are written as imperative statements the operator can either confirm
   or refute in seconds.

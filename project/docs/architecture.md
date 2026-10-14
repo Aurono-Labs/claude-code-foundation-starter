@@ -1,4 +1,4 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 ## Goal of this file
 Capture the technical architecture: stack, structure, key design decisions,
@@ -13,14 +13,14 @@ system is and *why* it's that shape.
 
 2. If starting fresh:
 
-   a) "What is the runtime — server, edge, on-device, hybrid? Why this
+   a) "What is the runtime: server, edge, on-device, hybrid? Why this
       choice and not the others?"
 
    b) "What's the stack? Languages, frameworks, datastore, infra. Be
       specific."
 
    c) "What's the deployment topology? Single binary? Containerized?
-      Multi-service? Where does it run — your servers, the user's
+      Multi-service? Where does it run: your servers, the user's
       device, both?"
 
    d) "What are the 3-5 architectural rules that, if broken, would
@@ -59,11 +59,11 @@ Replace this BOOTSTRAP block. Suggested structure:
 - **Date:** YYYY-MM-DD
 
 ## Architectural Rules (Non-Negotiable)
-1. <Rule> — <reason>
+1. <Rule>: <reason>
 2. ...
 
 ## What We Explicitly Do Not Use
-- <Technology / pattern> — <reason>
+- <Technology / pattern>: <reason>
 ```
 
 ## Rules

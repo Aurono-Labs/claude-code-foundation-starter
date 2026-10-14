@@ -138,11 +138,11 @@ This pack is made by **Aurono Labs** ([auronolabs.com](https://auronolabs.com)).
 
 ## License
 
-Licensed under the **Aurono Labs Foundation Starter License v1.0** — see [`LICENSE`](LICENSE) for the full text.
+Licensed under the **Aurono Labs Foundation Starter License v1.0**. See [`LICENSE`](LICENSE) for the full text.
 
 In short:
 
-- **You can** use, copy, modify, and adapt this pack for your own projects — personal, internal, commercial, or open source. Projects you build with it are yours.
+- **You can** use, copy, modify, and adapt this pack for your own projects: personal, internal, commercial, or open source. Projects you build with it are yours.
 - **You can** share private copies with collaborators working with you on those projects.
 - **You cannot** sell or commercialize this pack itself as a product, template, course, consulting deliverable, or paid offering.
 - **You cannot** redistribute this pack publicly without prior written permission.

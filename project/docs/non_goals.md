@@ -1,8 +1,8 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 ## Goal of this file
 Capture what this project will NOT do. Non-goals are as important as goals.
-Without explicit non-goals, scope creep is silent — every well-meaning idea
+Without explicit non-goals, scope creep is silent: every well-meaning idea
 looks reasonable and gets onto the plan. With this file, "no" has a written
 reason.
 
@@ -25,7 +25,7 @@ reason.
       or 'explicitly not reproduced'."
 
    d) "Are there features customers will ask for that you'll always say
-      no to? Anticipate them — the answer is easier to write before the
+      no to? Anticipate them: the answer is easier to write before the
       pressure arrives."
 
 3. "What does 'done' for V1 NOT include? Be honest. Multi-tenant? Mobile?

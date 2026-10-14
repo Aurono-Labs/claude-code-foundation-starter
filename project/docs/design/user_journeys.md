@@ -1,4 +1,4 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 ## Goal of this file
 Map who does what, when. Features should attach to journeys, not the other
@@ -19,7 +19,7 @@ looking for a customer.
    b) "Describe the *typical day* of an active user. What brings them
       back? Daily, weekly, monthly cadences?"
 
-   c) "Describe a *failure path*. Something has gone wrong — for them
+   c) "Describe a *failure path*. Something has gone wrong, for them
       or for the system. How do they find out? What's their next move?"
 
    d) "Describe a *churn moment*. When they would leave. What would
@@ -51,10 +51,10 @@ N. Outcome: <what they walk away with>
 
 ## Rules
 
-- Each journey is numbered, ordered, specific. Not a flowchart — a sequence
+- Each journey is numbered, ordered, specific. Not a flowchart: a sequence
   of human moments.
 - Each step describes both the action AND the feeling / understanding.
-- Features that aren't on a journey go in the parked list — not the plan.
+- Features that aren't on a journey go in the parked list, not the plan.
 - Updated in Phase 6 (Closing) whenever a feature introduces, extends, or
   changes a journey.
 

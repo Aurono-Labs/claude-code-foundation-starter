@@ -1,8 +1,8 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 ## Goal of this file
 Inventory the automated test suite: what frameworks are in use, where tests
-live, and — most importantly — what each test file covers and why. This is
+live, and (most importantly) what each test file covers and why. This is
 not test code; it's the *meta-documentation* of test code, so future
 contributors don't have to grep to find what already exists.
 
@@ -24,7 +24,7 @@ contributors don't have to grep to find what already exists.
       database, not mocks', 'every UI component handles four states:
       loading, empty, error, populated'."
 
-3. "Are there tests already written? List them — one row per file,
+3. "Are there tests already written? List them, one row per file,
    columns: file, test count, what it covers."
 
 ## What the final file should look like
@@ -64,8 +64,8 @@ Replace this BOOTSTRAP block. Suggested structure:
 
 ## Testing Rules
 
-- <rule> — <reason>
-- <rule> — <reason>
+- <rule>: <reason>
+- <rule>: <reason>
 ```
 
 ## Rules

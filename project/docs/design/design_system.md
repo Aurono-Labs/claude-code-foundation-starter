@@ -1,4 +1,4 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 CANON MODE: if this project connects to a canon repo, don't run this
 interview. Replace this whole file with a pointer to
@@ -14,7 +14,7 @@ domain_terminology.md.
 ## Interview prompts
 
 1. "Do you have an existing design system, brand guidelines, Figma library,
-   or a UI screenshot of the current product? Share it — I'll extract
+   or a UI screenshot of the current product? Share it and I'll extract
    tokens and conventions."
 
 2. If starting fresh:
@@ -60,7 +60,7 @@ Replace this BOOTSTRAP block. Suggested structure:
 ### Accent
 ### Text
 ### Semantic
-### Domain-specific (if any — e.g. status colors your domain gives a meaning)
+### Domain-specific (if any, e.g. status colors your domain gives a meaning)
 
 ## Typography
 | Token | Family | Size | Weight | Usage |
@@ -76,7 +76,7 @@ Replace this BOOTSTRAP block. Suggested structure:
 - Reduced motion
 
 ## Forbidden Patterns
-- <pattern> — <reason>
+- <pattern>: <reason>
 ```
 
 ## Rules
@@ -84,7 +84,7 @@ Replace this BOOTSTRAP block. Suggested structure:
 - Every token has a name, a hex, AND a usage. A token without usage gets
   misused.
 - Semantic colors have a "never used for X" line. Red specifically.
-- Accessibility floor is not aspirational — it's the minimum that ships.
+- Accessibility floor is not aspirational; it's the minimum that ships.
 - This file is referenced by every UI feature in Phase 3 (Planning) and
   Phase 4 (Execution).
 

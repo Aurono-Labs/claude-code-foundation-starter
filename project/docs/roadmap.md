@@ -1,4 +1,4 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 ## Goal of this file
 Capture *what is being shipped, in what order*. The roadmap teaches Claude
@@ -8,19 +8,19 @@ before they enter the backlog.
 
 ## Interview prompts
 
-1. "Do you have an existing roadmap — a Notion page, a slide, a public
+1. "Do you have an existing roadmap: a Notion page, a slide, a public
    roadmap on a website? Share it and I'll synthesize. Otherwise we'll
    build it together."
 
 2. If building from scratch:
 
    a) "What is the single thing you are shipping FIRST? Not the long-term
-      vision — the first usable thing a real customer can get value from.
+      vision: the first usable thing a real customer can get value from.
       Give it a name and a one-paragraph scope."
 
-   b) "What is the date window? Quarter is fine — be honest, not ambitious."
+   b) "What is the date window? Quarter is fine; be honest, not ambitious."
 
-   c) "What's the next phase after that — assuming Phase 1 ships? Same
+   c) "What's the next phase after that, assuming Phase 1 ships? Same
       shape: name, scope, date window."
 
    d) "Repeat for as many phases as you can see clearly. Stop when you
@@ -30,7 +30,7 @@ before they enter the backlog.
 3. For each phase, ask:
 
    - "What capabilities does this phase add?"
-   - "What is the scope boundary — what does it NOT include?"
+   - "What is the scope boundary: what does it NOT include?"
    - "If applicable: what is open source and what is proprietary?"
    - "What's the ecosystem implication? Partnerships, integrations, revenue?"
 
@@ -42,7 +42,7 @@ before they enter the backlog.
 Replace this BOOTSTRAP block. Suggested structure per phase:
 
 ```
-## Phase N — <Name>
+## Phase N: <Name>
 **Timeline:** <quarter/year>
 **Focus:** <one-line>
 

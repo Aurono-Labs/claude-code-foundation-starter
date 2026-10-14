@@ -1,4 +1,4 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 CANON MODE: shared terms live in `../<org>-canon/00-canon/05-terminology.md`.
 Read it first. This file holds only this product's own domain words; never
@@ -7,7 +7,7 @@ redefine a canon term here.
 ## Goal of this file
 Lock the vocabulary of the project. Every term defined here is **write-once**:
 it must never be renamed, overloaded, or reinterpreted across code, events,
-documentation, or UI. If a new concept appears, introduce a new term — don't
+documentation, or UI. If a new concept appears, introduce a new term; don't
 reuse an old one.
 
 The cost of this file is 20 minutes once. The payoff is years of avoided
@@ -21,7 +21,7 @@ word for different things; this file kills that cause before it grows.
 
 2. If starting from scratch:
 
-   a) "Name the 5–10 core nouns of your domain. Not the technical ones —
+   a) "Name the 5 to 10 core nouns of your domain. Not the technical ones:
       the things real users would name. Examples in a booking app: 'booking',
       'slot', 'cancellation'. Examples in healthcare: 'patient', 'visit',
       'prescription'."
@@ -49,18 +49,18 @@ word for different things; this file kills that cause before it grows.
 Replace this BOOTSTRAP block. Suggested structure:
 
 ```
-# <Project> Domain Terminology — v1.0 (Locked, Canonical)
+# <Project> Domain Terminology v1.0 (Locked, Canonical)
 
 **Status:** Locked
 **Version:** v1.0
 **Rule:** Terms defined here are write-once. Synonyms are forbidden.
 
-## 1. <Category — e.g. Bookings, Payments, Accounts>
+## 1. <Category, e.g. Bookings, Payments, Accounts>
 
 ### 1.1 <Term>
 **Definition:** > <one-sentence definition>
 **Properties:** <bulleted properties>
-**Used in:** <where this term appears — events, projections, UI labels>
+**Used in:** <where this term appears: events, projections, UI labels>
 **Explicitly NOT:** <what this term must never mean>
 
 (repeat for each term)
@@ -87,7 +87,7 @@ Replace this BOOTSTRAP block. Suggested structure:
 
 END BOOTSTRAP -->
 
-# Domain Terminology — v1.0 (Locked, Canonical)
+# Domain Terminology v1.0 (Locked, Canonical)
 
 > Run `Bootstrap the project` to fill in.
 

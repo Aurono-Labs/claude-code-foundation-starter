@@ -1,4 +1,4 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 CANON MODE: if this project connects to a canon repo, don't run this
 interview. Replace this whole file with:
@@ -13,14 +13,14 @@ into the canon's product page draft, not here).
 When the operator runs `Bootstrap the project`, walk them through this file.
 
 ## Goal of this file
-Capture the *why* of the project so that every later decision — features, scope,
-language, design — can be tested against it. The vision and mission are the
+Capture the *why* of the project so that every later decision (features, scope,
+language, design) can be tested against it. The vision and mission are the
 non-negotiables. They should be specific enough to reject bad ideas, not so
 generic that they reject nothing.
 
 ## Interview prompts (use these in order)
 
-1. "Do you have an existing vision or mission document — a deck, a one-pager,
+1. "Do you have an existing vision or mission document: a deck, a one-pager,
    a website 'About' page, a manifesto? If yes, paste it or share the path.
    I'll synthesize from it and ask follow-ups."
 
@@ -36,25 +36,25 @@ generic that they reject nothing.
    c) What are you NOT? What category does the market think you belong in
       that you specifically reject?"
 
-3. "Who is this for? Describe one specific person — not a persona, a real
+3. "Who is this for? Describe one specific person: not a persona, a real
    archetype with a name, age, day job, and current frustration."
 
 4. "If your project disappeared tomorrow, what would the people who depended
    on it lose? Be specific."
 
-5. "How does this project make money — or how will it? Revenue model affects
+5. "How does this project make money, or how will it? Revenue model affects
    incentive alignment, which affects every product decision."
 
 ## What the final file should look like
 
 Replace this BOOTSTRAP block with the synthesized content. Suggested structure:
 
-- **Vision** — one paragraph, future-tense, ambitious but specific
-- **Mission** — one paragraph, present-tense, concrete about what is built
-- **Belief** — 3-5 bullets, the non-negotiable principles
-- **What we build** — a short list of capabilities, paired with what we don't
-- **Trust model** — if relevant: open vs proprietary, who holds the data
-- **Incentive alignment** — how revenue works and why it doesn't corrupt the product
+- **Vision**: one paragraph, future-tense, ambitious but specific
+- **Mission**: one paragraph, present-tense, concrete about what is built
+- **Belief**: 3-5 bullets, the non-negotiable principles
+- **What we build**: a short list of capabilities, paired with what we don't
+- **Trust model** (if relevant): open vs proprietary, who holds the data
+- **Incentive alignment**: how revenue works and why it doesn't corrupt the product
 
 ## Rules
 
@@ -87,7 +87,7 @@ END BOOTSTRAP -->
 
 ## Trust Model
 
-<!-- open / proprietary boundary, who holds the data — if applicable -->
+<!-- open / proprietary boundary, who holds the data, if applicable -->
 
 ## Incentive Alignment
 

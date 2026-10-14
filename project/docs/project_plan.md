@@ -1,4 +1,4 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 ## Goal of this file
 What's being built: the open phases and their items, done (✅) or pending (⬜).
@@ -14,11 +14,11 @@ Updated continuously through the 6-phase workflow, never in a separate
 
 2. If starting fresh on a green-field project:
 
-   a) "What's Phase 0 — the foundation work that must happen before
+   a) "What's Phase 0: the foundation work that must happen before
       writing any product code? Things like: freeze terminology,
       define event taxonomy, lock contracts."
 
-   b) "What's Phase 1 — the first product phase? It should match
+   b) "What's Phase 1: the first product phase? It should match
       Phase 1 in docs/roadmap.md but break down into concrete
       sub-phases (1.1, 1.2, 1.3 …)."
 
@@ -34,7 +34,7 @@ Updated continuously through the 6-phase workflow, never in a separate
 Replace this BOOTSTRAP block. Suggested structure:
 
 ```
-# Project Plan — Master
+# Project Plan: Master
 
 This document is the **single source of truth** for the project.
 
@@ -44,7 +44,7 @@ Unchecked items (⬜) are pending.
 ## What is this project?
 <one-paragraph summary derived from vision_and_mission.md>
 
-## PHASE 0 — <Foundation work> ✅
+## PHASE 0: <Foundation work> ✅
 ### 0.1 <step> ✅
 - ✅ <action taken>
 - ✅ <action taken>
@@ -62,7 +62,7 @@ Unchecked items (⬜) are pending.
 
 END BOOTSTRAP -->
 
-# Project Plan — Master
+# Project Plan: Master
 
 > Run `Bootstrap the project` to fill in.
 
