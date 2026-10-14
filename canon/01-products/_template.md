@@ -1,6 +1,7 @@
 # <Product name>
 
-> Copy this file to `<product>.md` when a product connects to canon. `Bootstrap the project` drafts it from the product repo; commit it from a session in this repo.
+> Template. `Bootstrap the project` copies it to `<product>.md` and fills it in, replacing this note with the line below; commit the result from a session in this repo.
+
 > First written YYYY-MM-DD. Last re-checked against the repo: YYYY-MM-DD.
 
 ## Identity

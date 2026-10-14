@@ -28,6 +28,7 @@ The pack has two templates. Start with the one you need now.
 .
 ├── project/                            ← one per project
 │   ├── CLAUDE.md                       ← keystone: workflow, bootstrap, review
+│   ├── scripts/pre-commit              ← optional hook: no user-facing change without a functional test
 │   └── docs/
 │       ├── vision_and_mission.md       ← single-project mode only; canon mode points at the canon
 │       ├── roadmap.md
@@ -128,7 +129,7 @@ Learned from running the method across several projects at once:
 
 ## A note on the bootstrap blocks
 
-Every file to be filled opens with an HTML-style `<!-- BOOTSTRAP -->` comment. It is invisible in rendered markdown, visible to Claude Code, says how to interview you and what shape the content should take, and is deleted once the file is filled. To rerun the interview for one file, paste its block back at the top and ask Claude Code to re-bootstrap that file.
+Every file in `docs/` and `00-canon/` that needs your answers opens with an HTML-style `BOOTSTRAP` comment. It is invisible in rendered markdown, visible to Claude Code when it opens the file, says how to interview you and what shape the content should take, and disappears once the file is filled. The two `CLAUDE.md` files carry their instructions as visible text instead, because Claude Code removes HTML comments from `CLAUDE.md` before the model reads it. To rerun the interview for one file, paste its block back at the top and ask Claude Code to re-bootstrap that file.
 
 ---
 

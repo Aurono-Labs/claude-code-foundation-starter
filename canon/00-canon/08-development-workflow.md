@@ -2,7 +2,7 @@
 
 > Pre-filled: this is the method, not an interview answer. During `Bootstrap the canon`, walk the operator through it and ask only which steps to drop or add. Record any change with its date.
 
-Every product follows this six-phase cycle. Each product's `CLAUDE.md` reproduces the phases with its own file names and commands, and says at the top: *"The workflow below follows `<org>-canon/00-canon/08-development-workflow.md`."* Keep the phases, triggers and checkpoints; localize the rest. Don't copy this file's prose wholesale.
+Every product follows this six-phase cycle. Each product's `CLAUDE.md` reproduces the phases with its own file names and commands, and says at the top: *"The workflow below follows `../<org>-canon/00-canon/08-development-workflow.md`."* Keep the phases, triggers and checkpoints; localize the rest. Don't copy this file's prose wholesale.
 
 ## Phase 1: Idea intake
 

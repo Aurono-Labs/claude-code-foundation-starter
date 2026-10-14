@@ -31,8 +31,9 @@ before they enter the backlog.
 
    - "What capabilities does this phase add?"
    - "What is the scope boundary: what does it NOT include?"
-   - "If applicable: what is open source and what is proprietary?"
-   - "What's the ecosystem implication? Partnerships, integrations, revenue?"
+   - (If relevant) "What is open source and what is proprietary?"
+   - (If relevant) "What's the ecosystem implication? Partnerships,
+     integrations, revenue?"
 
 4. End with: "Is there a long-term endgame for this product family that
    gives the phases their direction?"

@@ -14,6 +14,8 @@ own repo; this file sequences them.
 4. "What is planned but has no date?" Mid-term, not Near-term.
 
 ## Rules
+- A project bootstrap may already have drafted Snapshot rows here. Keep them
+  when replacing this file.
 - Every Snapshot row carries the date it was last checked against the repo.
 - Mark what's shipped, what's planned, and what's only inferred.
 - What needs the decision owner's call goes in its own section, as a question,

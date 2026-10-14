@@ -1,23 +1,6 @@
 # <Organization> canon: instructions for Claude
 
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: read me at session start
-
-This is the keystone file of the **canon layer**: the one repo that holds what
-every product of this organization shares. Values, vision, design system, tone
-of voice, terminology, naming, writing style, the development workflow and the
-release workflow live here once. Each product repo points at them instead of
-carrying its own copy.
-
-Until the bootstrap has run, treat this file as scaffolding. Run the BOOTSTRAP
-PROTOCOL below when the operator types `Bootstrap the canon`, or when this is
-the first session and `00-canon/` still holds BOOTSTRAP blocks.
-
-After bootstrap, remove this comment block and replace every `<...>`
-placeholder with the operator's confirmed content.
-
-END BOOTSTRAP -->
-
-> **Status:** scaffold. Run `Bootstrap the canon` to fill in.
+> **Status: scaffold, not bootstrapped yet.** At the start of a session, if any file in `00-canon/` still holds a BOOTSTRAP comment block, say in one line that the canon isn't filled in and offer `Bootstrap the canon`. Until it has run, treat this file as scaffolding. The bootstrap fills in every `<...>` placeholder below and deletes this status line.
 
 This repo is <Organization>'s single source of truth for what its products share. Read `README.md` first for the structure and current status.
 
@@ -93,6 +76,8 @@ The product repos are separate repos, cloned as siblings of this one (`../<produ
 
 **Trigger:** the operator types `Bootstrap the canon`.
 
+This section is the one-time setup. Its last step deletes it; the starter pack keeps the original.
+
 Before starting, ask one question: **do product repos already exist?**
 
 - **No, or only one:** run the interview below.
@@ -105,7 +90,7 @@ Walk through the files in this order. For each file:
 3. Otherwise, run the interview prompts in the block.
 4. **Never invent content.** If the operator can't answer a section, mark it `TODO` and move on.
 5. Show the proposed content and wait for confirmation before writing.
-6. On confirmation, write the file and remove its BOOTSTRAP block.
+6. On confirmation, **replace the whole file** with the confirmed content: no BOOTSTRAP block, no "Run `Bootstrap`" status line, no sample rows left.
 
 **Order:**
 
@@ -119,9 +104,9 @@ Walk through the files in this order. For each file:
 8. `00-canon/08-development-workflow.md`: pre-filled. Walk the operator through it and ask only which steps to drop or add.
 9. `00-canon/09-release-workflow.md`: pre-filled. Ask whether any product has a staged deployment; if none does yet, leave it as is.
 10. `02-roadmap/portfolio-roadmap.md`: priorities and one Snapshot row per product.
-11. **Finally:** fill in this file's placeholders (people, labels, branch, confidentiality) and `README.md`'s status section.
+11. **Finally:** fill in this file's placeholders (people, labels, branch, confidentiality) and `README.md`'s status section, delete the status line at the top, and delete this Bootstrap Protocol section.
 
-Then tell the operator how to connect each product: `Bootstrap the project` in the product repo, which finds this canon and writes its `01-products/<product>.md` page.
+Then tell the operator how to connect each product: `Bootstrap the project` in the product repo. It finds this canon and drafts the product's own rows here (its `01-products/<product>.md` page, its row in the per-product table of `01-values-and-vision.md`, its tokens row in `02-design-system.md`, its Snapshot row in the roadmap). Those drafts are committed from a session in this repo. Leave those per-product rows empty during this bootstrap, and keep any rows a project bootstrap already drafted: when a file here is replaced whole, its existing per-product rows carry over.
 
 ---
 

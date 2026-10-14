@@ -1,8 +1,9 @@
 <!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
 
 CANON MODE: shared terms live in `../<org>-canon/00-canon/05-terminology.md`.
-Read it first. This file holds only this product's own domain words; never
-redefine a canon term here.
+Point at it in one line at the top of this file; don't copy its terms in.
+This file holds only this project's own domain words; never redefine a canon
+term here.
 
 ## Goal of this file
 Lock the vocabulary of the project. Every term defined here is **write-once**:
@@ -60,7 +61,7 @@ Replace this BOOTSTRAP block. Suggested structure:
 ### 1.1 <Term>
 **Definition:** > <one-sentence definition>
 **Properties:** <bulleted properties>
-**Used in:** <where this term appears: events, projections, UI labels>
+**Used in:** <where this term appears: code, database, UI labels>
 **Explicitly NOT:** <what this term must never mean>
 
 (repeat for each term)

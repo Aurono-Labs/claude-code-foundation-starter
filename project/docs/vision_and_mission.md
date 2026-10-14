@@ -5,12 +5,11 @@ interview. Replace this whole file with:
 
     # Vision and Mission
     Lives in the canon: `../<org>-canon/00-canon/01-values-and-vision.md`.
-    This product's row in its per-product table: `01-products/<product>.md`.
+    How this project lives up to it: `../<org>-canon/01-products/<this-project>.md`.
 
-and ask only how this product lives up to each canon belief (that answer goes
-into the canon's product page draft, not here).
-
-When the operator runs `Bootstrap the project`, walk them through this file.
+and ask only how this project lives up to each canon belief. The answers go
+into the canon drafts (the product page and the per-product table row), not
+here.
 
 ## Goal of this file
 Capture the *why* of the project so that every later decision (features, scope,
@@ -42,8 +41,9 @@ generic that they reject nothing.
 4. "If your project disappeared tomorrow, what would the people who depended
    on it lose? Be specific."
 
-5. "How does this project make money, or how will it? Revenue model affects
-   incentive alignment, which affects every product decision."
+5. (Skip for a personal or internal project.) "How does this project make
+   money, or how will it? Revenue model affects incentive alignment, which
+   affects every product decision."
 
 ## What the final file should look like
 
@@ -52,9 +52,10 @@ Replace this BOOTSTRAP block with the synthesized content. Suggested structure:
 - **Vision**: one paragraph, future-tense, ambitious but specific
 - **Mission**: one paragraph, present-tense, concrete about what is built
 - **Belief**: 3-5 bullets, the non-negotiable principles
+- **Who it's for**: the person from prompt 3, and what they'd lose (prompt 4)
 - **What we build**: a short list of capabilities, paired with what we don't
 - **Trust model** (if relevant): open vs proprietary, who holds the data
-- **Incentive alignment**: how revenue works and why it doesn't corrupt the product
+- **Incentive alignment** (if there is revenue): how it works and why it doesn't corrupt the product
 
 ## Rules
 
@@ -80,6 +81,10 @@ END BOOTSTRAP -->
 ## Our Belief
 
 <!-- 3-5 non-negotiable principles as bullets -->
+
+## Who It's For
+
+<!-- the person from prompt 3, and what they'd lose if this disappeared -->
 
 ## What We Build
 

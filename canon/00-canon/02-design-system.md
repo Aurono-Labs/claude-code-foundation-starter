@@ -18,7 +18,8 @@ this file is the source those copies are checked against.
 ## Rules
 - Every token has a name, a value and a usage. A token without a usage gets
   misused.
-- Semantic colors carry a "never used for" line.
+- Semantic colors carry a "never used for" line; for other tokens that
+  column may stay empty.
 - Tokens are physically copied into each product. A token change here needs a
   token change in every product that copied it; `04-process/sync-checklist.md`
   covers that.
@@ -47,6 +48,8 @@ END BOOTSTRAP -->
 ## Forbidden patterns
 
 ## Where products keep their copy
+
+Each project's bootstrap drafts its own row here.
 
 | Product | Tokens file | Last checked against this file |
 |---|---|---|

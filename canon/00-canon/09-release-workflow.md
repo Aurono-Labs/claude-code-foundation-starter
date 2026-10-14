@@ -2,7 +2,7 @@
 
 > Pre-filled: this is the method, not an interview answer. It applies to products with a staged deployment (a test environment or device before production). A product without one can skip it until it has one.
 
-Each such product's `CLAUDE.md` reproduces the three stages with its own hostnames, repo names and file paths, and says at the top: *"Releases follow `<org>-canon/00-canon/09-release-workflow.md`."*
+Each such product's `CLAUDE.md` reproduces the three stages with its own hostnames, repo names and file paths, and says at the top: *"Releases follow `../<org>-canon/00-canon/09-release-workflow.md`."*
 
 This is a different axis from `08-development-workflow.md`. That file covers how one change gets built and closed; this one covers how a batch of closed changes reaches users. One release usually bundles several Phase 6 closings.
 

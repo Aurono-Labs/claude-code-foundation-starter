@@ -58,6 +58,8 @@ END BOOTSTRAP -->
 
 ## Per product
 
+Each project's bootstrap drafts its own row here; leave the table empty during the canon bootstrap.
+
 | Product | <Belief 1> | <Belief 2> | <Belief 3> |
 |---|---|---|---|
 | <product> | <how it lives up to it> | | |
