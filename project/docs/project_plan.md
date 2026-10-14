@@ -60,43 +60,11 @@ Unchecked items (⬜) are pending.
 - The 6-phase workflow updates this file in Phase 4 and Phase 6 (completion
   marks). Backlog and parked items go to `backlog.md` in Phase 2.
 
-## Example — how Aurono Labs answered this
-
-> ## PHASE 0 — Freeze Reality (Before Writing Any Code) ✅
->
-> ### 0.1 Freeze Aurono PoC behavior ✅
-> * ✅ Document actual behavior (not intended behavior)
-> * ✅ Include: strategy evaluation order, rounding & quantization rules,
->       capital sufficiency logic, known edge cases & "weirdness"
-> * ✅ Saved as: `docs/aurono_PoC_behavior.md`
->
-> ### 0.2 Declare compatibility boundaries ✅
-> * ✅ Explicitly state what Aurono Start will not reproduce from PoC
-> * ✅ Saved as: `docs/v1_non_goals.md`
->
-> ## PHASE 1 — Canonical Contracts (No Runtime Code Yet) ✅
->
-> ### 1.1 Finalize Aurono Event Taxonomy ✅
-> * ✅ Freeze event names · Freeze semantic meaning · Versioned as
->       `event_taxonomy_v1.0`
->
-> ## Backlog
-> - 2026-04-09 — Scenario explorer for Lab
-> - 2026-04-12 — Strategy health dashboard
-> - 2026-04-19 — Demo mode for first-run experience
-
-(The real Aurono project_plan.md is ~3,600 lines — phases 0 through 18, plus
-backlog and parked items. The point isn't the volume; the point is that
-every commit can be traced to a numbered item that was planned, executed,
-and closed.)
-
-Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/project_plan.md`.
-
 END BOOTSTRAP -->
 
 # Project Plan — Master
 
-> Run `Bootstrap the foundation` to fill in.
+> Run `Bootstrap the project` to fill in.
 
 This document is the **single source of truth** for the project.
 

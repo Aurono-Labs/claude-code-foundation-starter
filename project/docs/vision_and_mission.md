@@ -10,7 +10,7 @@ interview. Replace this whole file with:
 and ask only how this product lives up to each canon belief (that answer goes
 into the canon's product page draft, not here).
 
-When the operator runs `Bootstrap the foundation`, walk them through this file.
+When the operator runs `Bootstrap the project`, walk them through this file.
 
 ## Goal of this file
 Capture the *why* of the project so that every later decision — features, scope,
@@ -30,8 +30,8 @@ generic that they reject nothing.
       that wouldn't be true otherwise?
 
    b) What are the three to five principles you will not compromise on, even
-      if a customer pays you to? (Concrete examples: 'we never take custody',
-      'no subscriptions for core use', 'all decisions are auditable')
+      if a customer pays you to? (Concrete examples: 'we never sell user data',
+      'no ads', 'every automated decision can be explained')
 
    c) What are you NOT? What category does the market think you belong in
       that you specifically reject?"
@@ -53,44 +53,21 @@ Replace this BOOTSTRAP block with the synthesized content. Suggested structure:
 - **Mission** — one paragraph, present-tense, concrete about what is built
 - **Belief** — 3-5 bullets, the non-negotiable principles
 - **What we build** — a short list of capabilities, paired with what we don't
-- **Trust model** — if relevant: open vs proprietary, custody, data
+- **Trust model** — if relevant: open vs proprietary, who holds the data
 - **Incentive alignment** — how revenue works and why it doesn't corrupt the product
 
 ## Rules
 
 - No marketing fluff. No "leveraging synergies". No hollow superlatives.
-- The Authenticity Editor test: would the founder say this sentence to a friend
-  at a dinner table? If not, rewrite.
+- Read it aloud: if you wouldn't say a sentence to a customer face to face,
+  rewrite it.
 - Be willing to be unpopular. A vision that everyone agrees with isn't a vision.
-
-## Example — how Aurono Labs answered this
-
-> **Vision:** A future where individuals maintain personal sovereignty over their
-> capital, supported by autonomous and decentralized execution software that
-> operates locally, transparently, and in the user's interest.
->
-> **Mission:** To build local-first, execution-only infrastructure that translates
-> user-defined financial intent into autonomous, auditable execution, while
-> preserving decentralization, transparency, and user ownership.
->
-> **Belief:** If software can move money, it must be locally controlled, fully
-> inspectable, incentive-aligned. Anything else eventually breaks trust.
->
-> **What we build:** Execution infrastructure — portfolio awareness, deterministic
-> strategy execution, transparent reporting, multi-asset ready.
-> **Not advice. Not custody. Not prediction.**
->
-> **Incentive alignment:** Revenue via exchange trading-fee commissions and a
-> local plug-and-play device. No subscriptions for core use. No performance
-> fees. No data monetization. Aurono earns only when users trade.
-
-Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/vision_and_mission.md`.
 
 END BOOTSTRAP -->
 
 # Vision & Mission
 
-> Run `Bootstrap the foundation` to fill in.
+> Run `Bootstrap the project` to fill in.
 
 ## Our Vision
 
@@ -110,7 +87,7 @@ END BOOTSTRAP -->
 
 ## Trust Model
 
-<!-- open / proprietary boundary, custody, data — if applicable -->
+<!-- open / proprietary boundary, who holds the data — if applicable -->
 
 ## Incentive Alignment
 

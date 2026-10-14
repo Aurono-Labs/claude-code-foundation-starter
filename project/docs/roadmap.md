@@ -65,44 +65,11 @@ End with a short **Summary** section connecting the phases to the vision.
 - The vision should be derivable from the sum of the phases. If it isn't,
   one of the two is wrong.
 
-## Example — how Aurono Labs answered this
-
-> ## Phase 1 — Aurono Start
-> **Timeline:** 2026 Q1
-> **Focus:** Local, execution-only crypto trading
->
-> Establishes the foundation of the platform. Production-ready, deterministic
-> execution engine running locally on a hardened Raspberry Pi. Users define
-> trading rules upfront; Aurono executes them exactly, no discretion or
-> prediction. Auditable and reproducible — users can always understand *why*
-> a trade occurred.
->
-> **Open-source scope:** strategy evaluation engine, decision/event builders,
-> settlement model, ledger and portfolio math, event schemas, reporting,
-> analytics computation, exchange adapter interfaces, Lab analysis core.
-> **Proprietary scope:** exchange adapters, Lab product UI, frontend
-> application, deployment tooling.
->
-> ## Phase 2 — Aurono Portfolio (2026 Q2)
-> Portfolio-aware execution and visibility across multiple exchanges.
->
-> ## Phase 3 — Aurono Strategy Store (2026 Q4)
-> Strategy choice without surrendering control. Mandatory rule transparency.
->
-> ## Phase 4 — Aurono Multi-Asset (2027)
-> Local, transparent capital portfolio manager beyond crypto.
->
-> ## Phase 5 — Aurono Infrastructure (parallel)
-> Execution layer embeddable into partner products. Aurono Foundation
-> formalizes stewardship of the open core.
-
-Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/Aurono_Roadmap.md`.
-
 END BOOTSTRAP -->
 
 # Product Roadmap
 
-> Run `Bootstrap the foundation` to fill in.
+> Run `Bootstrap the project` to fill in.
 
 <!-- Per-phase entries go here -->
 

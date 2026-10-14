@@ -76,43 +76,10 @@ Replace this BOOTSTRAP block. Suggested structure:
 - The "What it covers" column is for *humans reading later*, not for the
   CI machine. Write it like you'd describe the file to a new colleague.
 
-## Example — how Aurono Labs answered this
-
-> ### Running tests
-> ```bash
-> # Frontend (cwd is frontend/)
-> cd frontend && npm test           # single run
-> cd frontend && npm run test:watch # watch mode
->
-> # Backend
-> python -m pytest                  # full suite (~5min)
-> python -m pytest -m "not slow"    # fast suite (~7s, 353 tests)
-> ```
->
-> ### Backend: Analytics
-> | File | Tests | What it covers |
-> |---|---:|---|
-> | `tests/analytics/test_milestones.py` | 18 | `_detect_first_trade`, `_detect_trade_count` (10/25/50 sells), `_detect_portfolio_peak` (dual condition: value + units, 7 edge cases incl. price drift, post-sell, deposit). |
-> | `tests/analytics/test_benchmarks.py` | 14 | `net_injected_capital`, `compute_buy_and_hold_series`, `compute_dca_series` (monthly bucketing across calendar months), `compute_benchmark_comparison` (Phase 15.23). |
->
-> ### Frontend: Vitest + jsdom
-> | File | Tests | What it covers |
-> |---|---:|---|
-> | `src/lib/humanize.test.ts` | 58 | `statusLabel`, `timeframeToWords`, `friendlySymbol`, `eventToSentence` (14 event types), `relativeTime`, `dateGroupLabel`. |
-> | `src/lib/__tests__/triggerAnalysis.test.ts` | 31 | `computeSigmaThresholds`, `runTriggerSimulation` (BUY/SELL executed/ignored, ACB protection, cooldown, fee tracking, benchmarks). |
->
-> ### Testing rules
-> - Integration tests hit a real database, not mocks.
-> - `tsc -b` runs alongside vitest — vitest's esbuild ignores `noUnusedLocals`
->   etc.; the Pi install runs `tsc -b`, so both must pass before claiming green.
-> - Every UI component handles four states: loading, empty, error, populated.
-
-Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/testing/TEST-SUITE.md`.
-
 END BOOTSTRAP -->
 
 # Test Suite
 
-> Run `Bootstrap the foundation` to fill in.
+> Run `Bootstrap the project` to fill in.
 
 <!-- Test inventory sections go here -->

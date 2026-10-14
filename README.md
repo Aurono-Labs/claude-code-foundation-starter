@@ -5,7 +5,7 @@
 
 A skeleton for starting a new project with Claude Code in a structured way. Instead of opening a fresh repo and immediately asking Claude Code to write features, you drop these files in, run a short bootstrap interview, and end up with a documentation foundation Claude Code re-anchors on every session.
 
-The method behind this pack is described in the companion talk *How I Code With Claude Code*; the deck (HTML and PDF, Dutch and English) lives in [`presentation/`](presentation/). It covers the single-project method; the canon layer was added after the talk. Several project files include an **"Example: how Aurono Labs answered this"** block drawn from the Aurono Start documentation, so you can see the shape and quality bar of a good answer before your interview.
+The method behind this pack is described in the companion talk *How I Code With Claude Code*; the deck (HTML and PDF, Dutch and English) lives in [`presentation/`](presentation/). It covers the single-project method; the canon layer was added after the talk.
 
 ---
 
@@ -132,17 +132,9 @@ Every file to be filled opens with an HTML-style `<!-- BOOTSTRAP -->` comment. I
 
 ---
 
-## About Aurono Labs
+## About
 
-**Aurono Labs** is an organization building local-first, execution-only infrastructure for personal capital. The belief: if software can move money, it must be locally controlled, fully inspectable, and incentive-aligned — anything else eventually breaks trust.
-
-Aurono Labs ships products under the Aurono name. **Aurono Start** is the first — a local-first, execution-only crypto trading application that runs on the user's own hardware, executes user-defined rules, and never takes custody of funds. Future phases extend the platform to portfolio-aware execution, community strategies, multi-asset support, and embeddable execution infrastructure.
-
-This starter pack codifies the working method developed while building Aurono Start. The Aurono Start repository is the reference implementation of that method and the source of every example in this pack.
-
-- Website: [auronolabs.com](https://auronolabs.com)
-- Support docs: [support.auronolabs.com](https://support.auronolabs.com)
-- Contact: eppo@auronolabs.com
+This pack is made by **Aurono Labs** ([auronolabs.com](https://auronolabs.com)). Contact: eppo@auronolabs.com.
 
 ## License
 

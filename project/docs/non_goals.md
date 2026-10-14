@@ -14,8 +14,8 @@ reason.
 2. If starting fresh:
 
    a) "Name three things competitors do that you will explicitly NOT do.
-      Be specific. 'We don't take custody'. 'We don't make predictions'.
-      'We don't sell user data'."
+      Be specific. 'We don't sell user data'. 'We don't show ads'.
+      'We don't lock users into our format'."
 
    b) "For each: write one sentence explaining WHY. The why is what makes
       this a principle rather than a feature gap."
@@ -67,35 +67,11 @@ it is a non-goal by default.
 - The non-goals file should grow over time, not shrink. Every time you say
   no to something significant, capture it here.
 
-## Example — how Aurono Labs answered this
-
-> **Default rule:** If a behavior is not explicitly listed as a v1 goal
-> elsewhere, it is a non-goal by default.
->
-> ### 3.1 PoC Decision Logic
-> Aurono Start will **not**:
-> - reuse PoC buy/sell evaluation code
-> - preserve PoC evaluation order quirks
-> - preserve BUY-before-SELL mutual exclusion rules
-> - preserve PoC candle-close heuristics
->
-> **Why:** PoC behavior is not a reference implementation. Aurono Start is a
-> deliberate architectural reset — event-sourced, deterministic, auditable.
->
-> ### 3.2 Custody
-> Aurono will never hold user funds, even temporarily. Exchanges hold the
-> money; Aurono only places orders via API.
->
-> **Why:** Custody changes the trust model, the regulatory exposure, and the
-> failure surface. Non-custody is a load-bearing wall of the product.
-
-Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/v1_non_goals.md`.
-
 END BOOTSTRAP -->
 
 # Non-Goals & Compatibility Boundaries
 
-> Run `Bootstrap the foundation` to fill in.
+> Run `Bootstrap the project` to fill in.
 
 **Status:** Draft (pre-bootstrap)
 **Default rule:** If a behavior is not explicitly listed as a v1 goal elsewhere, it is a non-goal by default.

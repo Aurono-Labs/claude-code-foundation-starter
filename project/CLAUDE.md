@@ -10,15 +10,6 @@ done, treat this file as scaffolding, not a contract.
 After bootstrap, remove this comment block and replace the placeholders
 (`<...>`) with the operator's confirmed content.
 
-## Origin
-
-This pack codifies the working method developed at **Aurono Labs**
-(auronolabs.com) while shipping their first product, **Aurono Start**. The
-Aurono Start repository is the reference implementation of this method. Some
-foundation files in `docs/` include an "Example: how Aurono Labs answered
-this" block, so you can see the shape and quality bar of a good answer before
-the operator's interview begins.
-
 END BOOTSTRAP -->
 
 > **Status:** scaffold. Run `Bootstrap the project` to fill in.

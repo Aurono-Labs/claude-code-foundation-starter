@@ -69,41 +69,10 @@ operator triggers Phase 6 — Closing.
 - ALWAYS cover the four UI states for new pages/components that fetch data:
   loading, empty, error, populated.
 
-## Example — how Aurono Labs answered this
-
-> ### Phase 15.23 — Evaluate Tab: Rebuild around Simulate-style dual chart
-> **Date:** 2026-04-05
->
-> The Evaluate tab has been rebuilt from 9 sections to 4 elements: header +
-> verdict line, key metrics strip, dual-panel chart, three insight cards,
-> one audit drawer with tabs.
->
-> #### Shape & layout
-> - [ ] **passed** — Open `/strategies?mode=lab&lab=evaluate` and pick a
->       strategy with deposit history. Verify the page renders top-to-bottom:
->       header, verdict paragraph, Deposit/Withdraw buttons, dual-panel chart,
->       three insight cards in one row, single "Audit trail" collapsible.
-> - [ ] **passed** — Verify the old "Trade history", "Performance deep dive",
->       and "Trigger calibration" sections no longer appear as top-level.
->
-> #### Verdict sentence
-> - [ ] **passed** — Verdict includes: days running, total P&L, benchmark
->       deltas (vs buy & hold and vs DCA), and trade count summary.
-> - [ ] **open** — For a strategy with no deposits yet, verify the verdict
->       still renders without benchmark deltas (graceful degradation).
-> - [ ] **passed** — For a strategy with zero trades, verdict ends with
->       "No trades yet." instead of a trade count.
-
-(The real Aurono Functional_Tests.md is ~1,600 lines. Every Phase 4
-deliverable adds a block like this; the pre-commit hook blocks user-facing
-code commits that don't also touch this file.)
-
-Source: Aurono Start (reference implementation by Aurono Labs · auronolabs.com) · `docs/Functional_Tests.md`.
-
 END BOOTSTRAP -->
 
 # Functional Tests
 
-> Run `Bootstrap the foundation` to set up the structure.
+> Run `Bootstrap the project` to set up the structure.
 
 <!-- Tests will be appended below this line during Phase 4 of each feature -->
