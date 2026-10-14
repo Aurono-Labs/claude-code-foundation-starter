@@ -1,5 +1,15 @@
 <!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
 
+CANON MODE: if this project connects to a canon repo, don't run this
+interview. Replace this whole file with:
+
+    # Vision and Mission
+    Lives in the canon: `../<org>-canon/00-canon/01-values-and-vision.md`.
+    This product's row in its per-product table: `01-products/<product>.md`.
+
+and ask only how this product lives up to each canon belief (that answer goes
+into the canon's product page draft, not here).
+
 When the operator runs `Bootstrap the foundation`, walk them through this file.
 
 ## Goal of this file

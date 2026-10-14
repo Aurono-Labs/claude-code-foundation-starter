@@ -5,145 +5,130 @@
 
 A skeleton for starting a new project with Claude Code in a structured way. Instead of opening a fresh repo and immediately asking Claude Code to write features, you drop these files in, run a short bootstrap interview, and end up with a documentation foundation Claude Code re-anchors on every session.
 
-The method behind this pack is described in detail in the companion talk *How I Code With Claude Code* — the full deck (HTML + PDF, NL & EN) lives in [`presentation/`](presentation/). Every foundation file's bootstrap preamble includes a short **"Example — how Aurono Labs answered this"** block drawn from the real Aurono Start documentation, so operators can see the shape and quality bar of a good answer before they start their interview.
+The method behind this pack is described in the companion talk *How I Code With Claude Code*; the deck (HTML and PDF, Dutch and English) lives in [`presentation/`](presentation/). It covers the single-project method; the canon layer was added after the talk. Several project files include an **"Example: how Aurono Labs answered this"** block drawn from the Aurono Start documentation, so you can see the shape and quality bar of a good answer before your interview.
 
 ---
 
-## What's in this pack
+## Two layers
+
+The pack has two templates. Start with the one you need now.
+
+| | `project/` | `canon/` |
+|---|---|---|
+| **What it is** | The foundation for one project | The shared layer above several projects |
+| **Holds** | Roadmap, terminology, architecture, plan, backlog, tests, journeys, the six-phase workflow | Values and vision, design system, UX principles, tone of voice, shared terminology, naming, writing style, the development and release workflows, one page per product, the portfolio roadmap |
+| **You need it** | From the first commit | From the second project |
+| **Bootstrap** | `Bootstrap the project` | `Bootstrap the canon` |
+
+**Why a canon.** One project with a good foundation works. Two or three projects each with their own foundation drift apart: each writes its own vision text, design principles and workflow notes, nobody disagrees, and a year later they say different things. The canon holds the shared content once. Each project's `CLAUDE.md` points at it instead of restating it, and logs on purpose where it differs.
+
+**When to add one.** The signal is copying: a section of one project's `CLAUDE.md` pasted into another, or the same fix applied by hand to two copies of one rule.
 
 ```
 .
-├── CLAUDE.md                          ← Keystone: the contract
-├── LICENSE                            ← Aurono Labs Foundation Starter License v1.0
-├── docs/
-│   ├── vision_and_mission.md          ← Layer 1 — Why we exist
-│   ├── roadmap.md                     ← Layer 2 — What we're shipping
-│   ├── domain_terminology.md          ← Layer 3a — How we speak
-│   ├── non_goals.md                   ← Layer 3b — What we explicitly won't do
-│   ├── architecture.md                ← Layer 4a — Technical structure
-│   ├── project_plan.md                ← Layer 4b — Single source of truth for work state
-│   ├── functional_tests.md            ← Layer 5a — Manual / exploratory tests
-│   ├── design/
-│   │   ├── design_system.md           ← Layer 5b — Visual & accessibility rules
-│   │   └── user_journeys.md           ← Layer 5c — Who does what, when
-│   └── testing/
-│       └── test_suite.md              ← Layer 5d — Automated test inventory
-└── presentation/                      ← The companion talk
-    ├── hoe-ik-codeer-met-claude-code.html / .pdf   ← Dutch
-    ├── how-i-code-with-claude-code.html / .pdf     ← English
-    └── aurono-labs-logo.png
+├── project/                            ← one per project
+│   ├── CLAUDE.md                       ← keystone: workflow, bootstrap, review
+│   └── docs/
+│       ├── vision_and_mission.md       ← single-project mode only; canon mode points at the canon
+│       ├── roadmap.md
+│       ├── domain_terminology.md       ← this project's own words
+│       ├── non_goals.md
+│       ├── architecture.md
+│       ├── project_plan.md             ← what's being built
+│       ├── backlog.md                  ← what might be built, and what was parked
+│       ├── project_history.md          ← closed phases
+│       ├── functional_tests.md
+│       ├── release_notes_next.md       ← only with staged releases
+│       ├── design/
+│       │   ├── design_system.md        ← canon mode: pointer plus exceptions
+│       │   └── user_journeys.md
+│       └── testing/
+│           └── test_suite.md
+├── canon/                              ← one per organization
+│   ├── CLAUDE.md                       ← issues as inbox, files as record, cross-repo rules, review
+│   ├── README.md                       ← includes the Canon Alignment block for projects
+│   ├── 00-canon/                       ← values, design, UX, tone, terms, naming, style, workflows
+│   ├── 01-products/_template.md        ← per project: deliberate adaptations, drift log
+│   ├── 02-roadmap/portfolio-roadmap.md
+│   ├── 03-conflicts/conflict-log.md
+│   ├── 04-process/                     ← proposing a change, sync checklist, extracting a canon
+│   └── 05-business/                    ← optional
+├── presentation/                       ← the companion talk
+└── LICENSE
 ```
 
-Each file is **deliberately empty** below a `<!-- BOOTSTRAP INSTRUCTIONS -->` block. The block tells Claude Code how to interview you and fill the file in. Nothing about your specific organization is prescribed — only the *shape* of the answers.
+Files that need your answers are empty below a `<!-- BOOTSTRAP INSTRUCTIONS -->` block that tells Claude Code how to interview you. The two workflow files in `canon/00-canon/` come filled in: they are the method itself.
 
 ---
 
 ## How to use it
 
-### Step 1 — Drop the pack into a fresh repo
+### One project, no canon
 
 ```bash
-# from the repo root
-cp -R path/to/starter-pack/* .
-git add -A && git commit -m "chore: add foundation skeleton"
-```
-
-### Step 2 — Open Claude Code in that repo
-
-```bash
+cp -R path/to/starter/project/. my-project/
+cd my-project && git add -A && git commit -m "Add foundation skeleton"
 claude
 ```
 
-Claude Code will read `CLAUDE.md` at session start. The CLAUDE.md in this pack contains the bootstrap protocol.
+Then type `Bootstrap the project`. Claude Code asks whether there's a canon, finds none, and walks through each file: share existing material or answer the interview. Expect 1.5 to 2.5 hours. It is the most valuable two hours you will spend on the project.
 
-### Step 3 — Run the bootstrap interview
+### Several projects, with a canon
 
-Type:
-
-```
-Bootstrap the foundation
-```
-
-Claude Code will walk through each file in order:
-
-1. `vision_and_mission.md`
-2. `roadmap.md`
-3. `domain_terminology.md`
-4. `non_goals.md`
-5. `architecture.md`
-6. `project_plan.md`
-7. `design/design_system.md`
-8. `design/user_journeys.md`
-9. `testing/test_suite.md`
-10. `functional_tests.md`
-
-For each file it will ask you to either:
-- Share existing material (PDFs, slides, web pages, internal wikis)
-- Or answer the interview questions directly
-
-After each file, it will write the file and confirm with you before moving on.
-
-**Expect this to take 1.5 – 2.5 hours.** It is the most valuable two hours you will spend on the project.
-
-### Step 4 — Start working
-
-Once the foundation is in place, daily work follows the 6-phase workflow defined in `CLAUDE.md`:
+Clone every repo as a sibling under one parent directory; the files reference each other by relative path.
 
 ```
-"New idea: …"             →  Phase 1 — Idea Intake (assessment)
-"Add to backlog"          →  Phase 2 — Backlog
-"Let's build X"           →  Phase 3 — Planning
-"Plan accepted"           →  Phase 4 — Execution (code + tests + docs, no commit)
-(you test manually)       →  Phase 5 — Functional Testing
-"Functional tests closed" →  Phase 6 — Closing (feature branch + commit + push)
+work/
+├── my-org-canon/        ← from starter/canon/
+├── project-a/           ← from starter/project/
+└── project-b/
 ```
+
+1. **Create the canon.** Copy `canon/` into a new repo named `<org>-canon` and run `Bootstrap the canon`. If projects already exist, it runs `04-process/extracting-a-canon.md` instead: it reads the existing repos, lists where they disagree, and you decide each point.
+2. **Connect each project.** In the project, run `Bootstrap the project`. It finds the canon, skips the interviews the canon already answers, pastes the `Canon Alignment` block into the project's `CLAUDE.md`, and drafts the project's page in `01-products/`. Commit that page from a canon session.
+3. **Work.** Daily work follows the six-phase workflow below. Changes to shared content go through `canon/04-process/proposing-a-change.md`.
+
+### Daily work: the six phases
+
+```
+"New idea: …"             →  Phase 1  assessment against the values, no file changes
+"Add to backlog"          →  Phase 2  dated entry in docs/backlog.md
+"Let's build X"           →  Phase 3  full plan, including a canon check
+"Plan accepted"           →  Phase 4  code, tests, docs; no commit
+(you test)                →  Phase 5  functional tests closed
+"Functional tests closed" →  Phase 6  feature branch, pull request, sibling and drift checks
+```
+
+Projects with staged deployments add a three-stage release workflow: dev, pre-release on an acceptance environment, promote to production.
+
+---
+
+## What's new in this version
+
+Learned from running the method across several projects at once:
+
+- **The canon layer**, with a protocol for extracting one from repos that already exist.
+- **Backlog and history** split out of the project plan, so the plan only shows what's open.
+- **Phase 6 checks**: sibling repos that share code, support docs that live elsewhere, drift from canon. Docs ride in the feature pull request.
+- **A release workflow**: audit the notes against the last promoted tag, never re-tag, never deploy automatically.
+- **Verification rules**: check claims against real data, re-verify a finding before restating it, check a review against the repo rather than its summary.
+- **Cross-repo rules**: edit in another repo but never commit there, and check later that the edit landed.
+- **Working with more than one person**: issues as the inbox, files as the record, a **Not decided:** line on every open thread.
+- **Dependency security**: justify, lock with hashes, audit before release.
 
 ---
 
 ## Keeping the foundation alive
 
-Foundation files drift as the project grows. Two mechanisms in this pack keep them aligned:
-
-### Manual review — anytime
-
-```
-Review the foundation
-```
-
-Claude Code reads every foundation file, looks for contradictions, vocabulary drift, scope creep, and stale completed items, and produces a report grouped by **Conflicts / Drift / Stale / Suggestions**. You approve, it applies edits, it logs the review in `docs/.foundation_review_log.md`.
-
-### Automatic reminder — on session start
-
-`CLAUDE.md` includes an instruction telling Claude Code to check `docs/.foundation_review_log.md` at session start and surface a one-line reminder if the last review is older than 30 days. Non-blocking — just a nudge.
-
-### True scheduled trigger — optional
-
-For a real time-based trigger, use Claude Code's `/schedule` skill to create a recurring routine:
-
-```
-/schedule create
-
-Name:     foundation-review
-Schedule: every Monday at 09:00
-Prompt:   Review the foundation
-```
-
-This runs as a remote agent on the schedule you set. See the Claude Code docs on **routines** for setup.
+- **`Review the foundation`** in a project: conflicts, drift, stale items, gaps and unverified findings, as a report you approve before anything changes. Logged in `docs/.foundation_review_log.md`; Claude reminds you at session start once the last review is more than 30 days old.
+- **`Review the canon`** in the canon: projects drifting from canon, and canon's own pages about projects going stale. Each project's row is re-checked against its repo and dated.
+- **Scheduled**: either review can run as a routine through Claude Code's `/schedule` skill.
 
 ---
 
-## A note on the bootstrap preambles
+## A note on the bootstrap blocks
 
-Every file in this pack opens with an HTML-style `<!-- BOOTSTRAP -->` comment block. That block:
-
-- Is **invisible** in rendered markdown (GitHub, editors)
-- Is **visible** to Claude Code when it reads the file
-- Tells Claude Code exactly how to interview you and what shape the final content should take
-- Should be **deleted by Claude Code** once the file is filled, replaced with the synthesized content
-
-If you ever want to rerun the interview for a single file, paste the preamble back at the top and ask Claude Code to re-bootstrap that file.
-
----
+Every file to be filled opens with an HTML-style `<!-- BOOTSTRAP -->` comment. It is invisible in rendered markdown, visible to Claude Code, says how to interview you and what shape the content should take, and is deleted once the file is filled. To rerun the interview for one file, paste its block back at the top and ask Claude Code to re-bootstrap that file.
 
 ---
 

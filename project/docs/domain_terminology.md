@@ -1,5 +1,9 @@
 <!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
 
+CANON MODE: shared terms live in `../<org>-canon/00-canon/05-terminology.md`.
+Read it first. This file holds only this product's own domain words; never
+redefine a canon term here.
+
 ## Goal of this file
 Lock the vocabulary of the project. Every term defined here is **write-once**:
 it must never be renamed, overloaded, or reinterpreted across code, events,

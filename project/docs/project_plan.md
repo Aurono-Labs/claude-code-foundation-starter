@@ -1,9 +1,10 @@
 <!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
 
 ## Goal of this file
-The single source of truth for project state: what's done (✅), what's pending (⬜),
-what's in the backlog, what's parked. Updated continuously through the 6-phase
-workflow — never in a separate "documentation pass".
+What's being built: the open phases and their items, done (✅) or pending (⬜).
+Updated continuously through the 6-phase workflow, never in a separate
+"documentation pass". Ideas live in `backlog.md`; closed phases move to
+`project_history.md`, so this file only shows what's open.
 
 ## Interview prompts
 
@@ -21,12 +22,12 @@ workflow — never in a separate "documentation pass".
       Phase 1 in docs/roadmap.md but break down into concrete
       sub-phases (1.1, 1.2, 1.3 …)."
 
-3. For backlog: "Are there ideas already that didn't make it into a phase
-   but should be remembered? List them with a one-line description each."
+3. For `backlog.md`: "Are there ideas already that didn't make it into a
+   phase but should be remembered? List them with a one-line description each."
 
-4. For parked: "Are there ideas you considered and explicitly chose NOT
-   to pursue (with a reason)? List them so future-you doesn't reconsider
-   without seeing the prior reasoning."
+4. For the Parked section of `backlog.md`: "Are there ideas you considered
+   and explicitly chose NOT to pursue (with a reason)? List them so future-you
+   doesn't reconsider without seeing the prior reasoning."
 
 ## What the final file should look like
 
@@ -49,24 +50,15 @@ Unchecked items (⬜) are pending.
 - ✅ <action taken>
 
 (repeat per phase)
-
-## Backlog
-<one-line entries with date and description>
-- 2026-MM-DD — <description>
-
-## Parked Items
-<one-line entries with date and reason for parking>
-- 2026-MM-DD — <description> (parked because: <reason>)
 ```
 
 ## Rules
 
-- Append-only history. Don't rewrite completed phases; mark them ✅ and
-  leave them as history.
-- Every backlog item has a date.
-- Every parked item has a date AND a reason.
-- The 6-phase workflow updates this file in Phase 2 (backlog/park) and
-  Phase 4 / Phase 6 (completion marks).
+- Don't rewrite completed items; mark them ✅. When the last open item of a
+  phase closes, move the whole phase to `project_history.md`. An open item
+  never sits in the history file, and a closed phase doesn't clutter the plan.
+- The 6-phase workflow updates this file in Phase 4 and Phase 6 (completion
+  marks). Backlog and parked items go to `backlog.md` in Phase 2.
 
 ## Example — how Aurono Labs answered this
 
@@ -111,12 +103,4 @@ This document is the **single source of truth** for the project.
 Checked items (✅) are completed and frozen.
 Unchecked items (⬜) are pending.
 
-<!-- Phase sections go here -->
-
-## Backlog
-
-<!-- one-line entries with date and description -->
-
-## Parked Items
-
-<!-- one-line entries with date and reason for parking -->
+<!-- Open phase sections go here. Ideas: backlog.md. Closed phases: project_history.md. -->

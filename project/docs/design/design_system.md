@@ -1,5 +1,11 @@
 <!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE — fill me in via interview
 
+CANON MODE: if this project connects to a canon repo, don't run this
+interview. Replace this whole file with a pointer to
+`../<org>-canon/00-canon/02-design-system.md`, followed by a table of this
+product's deliberate exceptions (token, canon value, this product's value,
+reason). Record the same exceptions in the canon's product page draft.
+
 ## Goal of this file
 Lock the visual and accessibility rules of the product so they survive across
 designers, contributors, and sessions. The frontend equivalent of
