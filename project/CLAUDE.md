@@ -4,9 +4,7 @@
 
 ## Canon Alignment
 
-The bootstrap replaces this whole section, heading included, with the `Canon Alignment` block from `../<org>-canon/README.md`. In single-project mode it deletes this section.
-
----
+The bootstrap replaces this whole section, heading included, with the `Canon Alignment` block from `../<org>-canon/README.md`, followed by a `---` line. In single-project mode it deletes this section, this note included.
 
 ## Running & Installing
 
@@ -15,6 +13,7 @@ The bootstrap replaces this whole section, heading included, with the `Canon Ali
 | Dev | `<dev command>` | |
 | Install (production) | `<install command>` | |
 | Build release artifact | `<build command>` | |
+| Deploy | `<deploy command, run by the operator>` | |
 
 ## Tests
 
@@ -28,8 +27,9 @@ The bootstrap replaces this whole section, heading included, with the `Canon Ali
 - **Main branch**: `<main branch name>`
 - **Remote**: <remote and host, e.g. `origin` on GitHub, or none>
 - **Feature branches**: short-lived, named `feature/<short-name>`, branched off main, deleted after merge.
-- **Who merges**: <solo: "I merge my own branches" | team: who merges to main, and that others work through pull requests>. Check who you're working for with `gh api user --jq .login`.
-- **Pre-commit hook**: blocks commits that touch user-facing code (<paths>) unless `docs/functional_tests.md` changes too. Bypass with `--no-verify` only for refactors with no visible change.
+- **Who merges**: <solo: "I merge my own branches" | team: who merges to main, and that others work through pull requests>.
+- *(GitHub remote)* Check who you're working for with `gh api user --jq .login`.
+- **Pre-commit hook**: `scripts/pre-commit` blocks commits that touch user-facing code (<paths>) unless `docs/functional_tests.md` changes too. After a fresh clone, install it with `cp scripts/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit`. Bypass with `--no-verify` only for refactors with no visible change.
 - **Deploying**: never deploy to a real environment automatically. Give the commands; the operator runs them.
 
 ## Other repos
@@ -58,11 +58,11 @@ Ask these once, before any file:
 ### Canon mode (a canon exists)
 
 1. Read `../<org>-canon/README.md`, `../<org>-canon/CLAUDE.md` and every file in `../<org>-canon/00-canon/`.
-2. **Check that the canon is finished.** List the files in `../<org>-canon/00-canon/` and `../<org>-canon/02-roadmap/` that still hold a BOOTSTRAP comment block and tell the operator which ones are empty. Don't run the canon's own bootstrap from here; that happens in a session in the canon repo. Carry on, and mark every point that depends on an empty canon file `TODO: canon file <name> is not filled in yet`.
+2. **Check that the canon is finished.** List the files in `../<org>-canon/00-canon/` and `../<org>-canon/02-roadmap/` that still hold a BOOTSTRAP comment block and tell the operator which ones are empty. Don't run the canon's own bootstrap from here; that happens in a session in the canon repo. Carry on. Where something depends on an empty canon file, write `TODO: canon file <name> is not filled in yet` in two places: directly below the pasted Canon Alignment block, and in the matching row of the product page draft.
 3. Replace this file's `Canon Alignment` section, heading included, with the block from the canon's `README.md`.
 4. `docs/vision_and_mission.md` and `docs/design/design_system.md` become pointers (their BOOTSTRAP blocks say how). Ask only how this project lives up to each canon belief, whether it needs any deliberate design exception, and where it will keep its copy of the design tokens.
 5. `docs/domain_terminology.md` points at `../<org>-canon/00-canon/05-terminology.md` and holds only this project's own words. Never copy or redefine a canon term.
-6. The workflow and release sections below keep their shape. Lines starting with *(canon mode)* stay; lines starting with *(single-project mode)* go.
+6. Every section of this file keeps its shape. Lines starting with *(canon mode)* stay; lines starting with *(single-project mode)* go.
 7. **Draft in the canon repo, without committing there:**
    - `../<org>-canon/01-products/<this-project>.md`, from `../<org>-canon/01-products/_template.md`. Ask for the repo owner and whether the repo is private or public.
    - this project's row in the per-product table of `../<org>-canon/00-canon/01-values-and-vision.md` (the belief answers from point 4);
@@ -104,12 +104,12 @@ Files marked *no interview* only get their scaffold replaced by an empty, ready-
 
 Ask, and check what can be checked:
 
-1. **Commands**: dev, install, fast tests, full tests. Build release artifact only if there is one.
+1. **Commands**: dev, install, fast tests, full tests, deploy (the operator runs it). Build release artifact only if there is one; otherwise delete its row.
 2. **Main branch**: compare the answer with `git branch --show-current` and point out a difference.
-3. **Remote**: is there one (check `git remote -v`), and on which host? Without a remote, Phase 6 merges locally.
+3. **Remote**: is there one (check `git remote -v`), and on which host? Lines starting with *(GitHub remote)* stay only with a GitHub remote. In Phase 6, keep the "With a remote" or the "Without a remote" sub-bullet, whichever applies, and delete the other.
 4. *(team)* **Who merges to main**, and whether others work through pull requests.
 5. **Other repos** this project works with (canon, a website with support docs, a project it forked from).
-6. **Staged releases**: does a change go to a test or acceptance environment before production? If yes: the hostnames of each stage.
+6. **Staged releases**: does a change go to a test or acceptance environment before production? If yes: where Stage 1 runs (usually the dev machine) and the hostnames of the acceptance and production stages.
 7. **Dependencies**: are third-party packages used? If yes: the lock and audit commands.
 8. **Pre-commit hook**: install it now? If yes, ask which paths hold user-facing code, put them in `scripts/pre-commit` as its `USER_FACING` pattern, copy that file to `.git/hooks/pre-commit`, make it executable, and say so. If no, delete `scripts/pre-commit` and the hook line in the Git section.
 9. **Core principle**: single-project mode: one sentence, from `docs/vision_and_mission.md`. Canon mode: cite the canon belief numbers this project leans on most; don't paraphrase them.
@@ -118,7 +118,9 @@ Then clean up this file:
 
 - Fill every `<...>` placeholder in every section of this file except this protocol, which gets deleted. Placeholders inside trigger phrases and examples (`feature/<short-name>`, `New idea: <description>`, `Let's build <item>`) are syntax and stay.
 - A line or list item that starts with *(canon mode)* or *(single-project mode)* belongs to that mode only. Delete the ones for the other mode, whole; remove the marker from the ones that stay.
-- No other repos: delete the **Other repos** section.
+- No other repos: delete the **Other repos** section, and the Sibling and Support-docs checks in Phase 6.
+- After deleting list items, renumber the list.
+- Remove every remaining marker, such as *(team)* or *(GitHub remote)*, from the lines that stay.
 - No staged releases: delete the **Release Workflow** section, `docs/release_notes_next.md`, and its row in the Documentation Files table. Staged releases: keep `docs/release_notes_next.md` as it is; it's ready to use.
 - No third-party packages: delete the **Dependency Security** section.
 - Delete the status line at the top.

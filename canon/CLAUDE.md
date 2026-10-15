@@ -1,6 +1,6 @@
 # <Organization> canon: instructions for Claude
 
-> **Status: scaffold, not bootstrapped yet.** At the start of a session, if any file in `00-canon/` still holds a BOOTSTRAP comment block, say in one line that the canon isn't filled in and offer `Bootstrap the canon`. Until it has run, treat this file as scaffolding. The bootstrap fills in every `<...>` placeholder below and deletes this status line.
+> **Status: scaffold, not bootstrapped yet.** At the start of a session, if any file in `00-canon/` or `02-roadmap/` still holds a BOOTSTRAP comment block, say in one line that the canon isn't filled in and offer `Bootstrap the canon`. Until it has run, treat this file as scaffolding. The bootstrap fills in every `<...>` placeholder below and deletes this status line.
 
 This repo is <Organization>'s single source of truth for what its products share. Read `README.md` first for the structure and current status.
 
@@ -78,7 +78,9 @@ The product repos are separate repos, cloned as siblings of this one (`../<produ
 
 This section is the one-time setup. Its last step deletes it; the starter pack keeps the original.
 
-Before starting, ask one question: **do product repos already exist?**
+To bootstrap a single file again, paste its BOOTSTRAP block back at the top of the file and run steps 1 to 6 below for that file only.
+
+Before starting a full bootstrap, ask one question: **do product repos already exist?**
 
 - **No, or only one:** run the interview below.
 - **Yes, two or more:** run `04-process/extracting-a-canon.md` instead. It reads the existing repos first, so the interview starts from what the products already say rather than from a blank page.
