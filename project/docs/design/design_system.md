@@ -2,9 +2,13 @@
 
 CANON MODE: if this project connects to a canon repo, don't run this
 interview. Replace this whole file with a pointer to
-`../<org>-canon/00-canon/02-design-system.md`, followed by a table of this
-product's deliberate exceptions (token, canon value, this product's value,
-reason). Record the same exceptions in the canon's product page draft.
+`../<org>-canon/00-canon/02-design-system.md`, followed by:
+- where this project keeps its copy of the tokens (the file path);
+- a table of this project's deliberate exceptions (token, canon value, this
+  project's value, reason).
+Ask for both. Record the exceptions in the canon's product page draft, and the
+tokens path in the canon design system's "Where products keep their copy"
+table (draft only, not committed).
 
 ## Goal of this file
 Lock the visual and accessibility rules of the product so they survive across

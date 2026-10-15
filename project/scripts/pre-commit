@@ -1,0 +1,18 @@
+#!/bin/sh
+# Blocks a commit that changes user-facing code without a functional test
+# update. Install: cp scripts/pre-commit .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
+# Bypass for a refactor with no visible change: git commit --no-verify
+
+# Paths that hold user-facing code, as an extended regular expression.
+# The bootstrap fills this in; example: '^(frontend/src/|app/routes/)'
+USER_FACING='<user-facing path regex>'
+
+staged=$(git diff --cached --name-only)
+
+if echo "$staged" | grep -Eq "$USER_FACING"; then
+  if ! echo "$staged" | grep -qx 'docs/functional_tests.md'; then
+    echo "pre-commit: user-facing code changed, but docs/functional_tests.md did not."
+    echo "Add functional test entries, or commit with --no-verify if nothing visible changed."
+    exit 1
+  fi
+fi

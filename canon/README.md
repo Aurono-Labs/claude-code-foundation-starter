@@ -14,13 +14,13 @@ Each product's own `CLAUDE.md` **points at** these files and doesn't restate the
 ## Canon Alignment
 Foundational values, vision, design system, and naming rules live in `../<org>-canon`
 (not duplicated here). Check:
-- `00-canon/01-values-and-vision.md`: at idea intake
-- `00-canon/02-design-system.md` + `03-ux-principles.md`: at feature and design review
-- `00-canon/04-tone-of-voice.md` + `07-writing-style-guide.md`: when writing user-facing copy
-- `00-canon/05-terminology.md` + `06-naming-conventions.md`: when naming anything
-The development workflow below follows `00-canon/08-development-workflow.md`;
-releases follow `00-canon/09-release-workflow.md`.
-This product's own adaptations are logged in `<org>-canon/01-products/<this-product>.md`.
+- `../<org>-canon/00-canon/01-values-and-vision.md`: at idea intake
+- `../<org>-canon/00-canon/02-design-system.md` + `03-ux-principles.md`: at feature and design review
+- `../<org>-canon/00-canon/04-tone-of-voice.md` + `07-writing-style-guide.md`: when writing user-facing copy
+- `../<org>-canon/00-canon/05-terminology.md` + `06-naming-conventions.md`: when naming anything
+The development workflow below follows `../<org>-canon/00-canon/08-development-workflow.md`;
+releases follow `../<org>-canon/00-canon/09-release-workflow.md`.
+This product's own adaptations are logged in `../<org>-canon/01-products/<this-project>.md`.
 ```
 
 References use a relative path (`../<org>-canon`), so all repos are cloned as siblings under one parent directory.

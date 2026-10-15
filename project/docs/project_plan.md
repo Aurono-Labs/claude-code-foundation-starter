@@ -14,9 +14,9 @@ Updated continuously through the 6-phase workflow, never in a separate
 
 2. If starting fresh on a green-field project:
 
-   a) "What's Phase 0: the foundation work that must happen before
-      writing any product code? Things like: freeze terminology,
-      define event taxonomy, lock contracts."
+   a) (Skip for a small project.) "Is there a Phase 0: foundation work
+      that must happen before writing product code? Things like: agree on
+      terminology, fix the data model, settle an API contract."
 
    b) "What's Phase 1: the first product phase? It should match
       Phase 1 in docs/roadmap.md but break down into concrete
@@ -44,10 +44,11 @@ Unchecked items (⬜) are pending.
 ## What is this project?
 <one-paragraph summary derived from vision_and_mission.md>
 
-## PHASE 0: <Foundation work> ✅
-### 0.1 <step> ✅
+## PHASE 1: <Name>
+### 1.1 <step> ✅
 - ✅ <action taken>
-- ✅ <action taken>
+### 1.2 <step>
+- ⬜ <action to take>
 
 (repeat per phase)
 ```

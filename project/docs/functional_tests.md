@@ -1,4 +1,4 @@
-<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: fill me in via interview
+<!-- BOOTSTRAP INSTRUCTIONS FOR CLAUDE CODE: no interview
 
 ## Goal of this file
 Track manual / exploratory tests for each feature. Unlike automated tests,
@@ -19,10 +19,10 @@ The operator runs them manually and updates statuses.
 
 ## Bootstrap action
 
-For a brand-new project, this file just needs the header and a "how to use"
-section. No content yet; content arrives in Phase 4 of the first feature.
-
-Replace this BOOTSTRAP block with the structure below.
+No interview. Replace the whole file with the structure below: the header,
+"How to use this file", "Rules", "Shape of an entry" and an empty "Tests"
+section. Keep the shape as an example under its own heading; real entries
+arrive in Phase 4 of the first feature, under "Tests".
 
 ## What the final file should look like
 
@@ -43,21 +43,6 @@ entries with status `open`. The operator performs the tests and updates the
 status to `passed` or `failed`. When all tests for a feature are closed, the
 operator triggers Phase 6 (Closing).
 
-## Tests
-
-<!-- New functional test entries are appended below this line -->
-
-### Phase X.Y: <Feature name>
-
-**Date:** YYYY-MM-DD
-
-<short description of what changed>
-
-#### <Section grouping>
-- [ ] **open**: <specific testable statement>
-- [ ] **open**: <specific testable statement>
-```
-
 ## Rules
 
 - One bullet = one testable statement. Compound tests are forbidden; split
@@ -68,6 +53,22 @@ operator triggers Phase 6 (Closing).
   empty state, error state).
 - ALWAYS cover the four UI states for new pages/components that fetch data:
   loading, empty, error, populated.
+- The log is historical: when behavior changes later, add entries; never
+  rewrite old ones.
+
+## Shape of an entry (example)
+
+    ### <Plan item, e.g. 2.3>: <Feature name>
+
+    **Date:** YYYY-MM-DD
+
+    <short description of what changed>
+
+    #### <Section grouping>
+    - [ ] **open**: <specific testable statement>
+
+## Tests
+```
 
 END BOOTSTRAP -->
 

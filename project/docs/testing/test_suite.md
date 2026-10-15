@@ -36,11 +36,9 @@ Replace this BOOTSTRAP block. Suggested structure:
 
 ## Running Tests
 
-```bash
-<fast suite command>
-<full suite command>
-<watch mode>
-```
+    <fast suite command>
+    <full suite command>
+    <watch mode>
 
 ## Backend Tests
 
